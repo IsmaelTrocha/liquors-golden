@@ -1,5 +1,6 @@
 package com.liquorsgolden.lq.application;
 
+import com.liquorsgolden.lq.application.image.ImageUploadApplication;
 import com.liquorsgolden.lq.application.products.CreateProductApplication;
 import com.liquorsgolden.lq.application.products.DeleteProductByIdApplication;
 import com.liquorsgolden.lq.application.products.FindAllByNameProductApplication;
@@ -9,6 +10,7 @@ import com.liquorsgolden.lq.application.products.GetAllProductByCategoryIdApplic
 import com.liquorsgolden.lq.application.products.GetProductByIdApplication;
 import com.liquorsgolden.lq.application.products.UpdateProductApplication;
 import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
+import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
 import com.liquorsgolden.lq.domain.services.product.CreateProductService;
 import com.liquorsgolden.lq.domain.services.product.DeleteProductByIdService;
 import com.liquorsgolden.lq.domain.services.product.FindAllByNameProductService;
@@ -28,10 +30,12 @@ public class BeanModuleApplication {
   public CreateProductApplication createProductApplication(
       CreateProductService createProductService,
       GetProductByIdApplication getProductApplication,
-      UpdateStockProductService updateStockProductService) {
+      UpdateStockProductService updateStockProductService,
+      ImageUploadApplication imageUploadApplication) {
     return new CreateProductApplication(createProductService,
         getProductApplication,
-        updateStockProductService);
+        updateStockProductService,
+        imageUploadApplication);
   }
 
   @Bean
@@ -84,4 +88,10 @@ public class BeanModuleApplication {
     return new UpdateStockProductApplication(updateStockProductService);
   }
 
+  @Bean
+  public ImageUploadApplication imageUploadApplication(
+      ImageUploadService imageUploadService) {
+    return new ImageUploadApplication(
+        imageUploadService);
+  }
 }
