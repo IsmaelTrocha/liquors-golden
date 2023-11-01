@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ public class ProductController {
   private final ProductRequestMapper productRequestMapper;
   private final MessageUtils messageUtils;
 
+  @PostMapping
   public ResponseEntity<CreateResponse> createProduct(@RequestBody ProductRequest productRequest) {
     createProductApplication.createProduct(productRequestMapper.toEntity(productRequest));
     return new ResponseEntity<>(new CreateResponse(

@@ -83,4 +83,5 @@ public class BeanModuleApplication {
       UpdateStockProductService updateStockProductService) {
     return new UpdateStockProductApplication(updateStockProductService);
   }
+
 }
