@@ -23,6 +23,9 @@ public interface ProductRepository extends JpaRepository<ProductDto, Long> {
   @Query(value = "SELECT p FROM ProductDto p WHERE p.proportion = :proportionId")
   List<ProductDto> findAllByProportionId(@Param("proportionId") Long proportionId);
 
+  @Query(value = "SELECT MAX(p.id) FROM ProductDto p")
+  Long findTopByOrderByIdDesc();
+
 
   @Modifying
   @Transactional

@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class Proportion {
 
   private Long id;
-  private int quantity;
+  private String quantity;
 }

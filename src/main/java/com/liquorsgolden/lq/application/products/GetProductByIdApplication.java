@@ -12,4 +12,8 @@ public class GetProductByIdApplication {
   public Product getProductById(Long id){
     return getProductByIdService.getProductById(id);
   }
+
+  public Long getMaxIdProductId( ) {
+    return getProductByIdService.findTopByOrderByIdDesc();
+  }
 }
