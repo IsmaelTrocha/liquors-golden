@@ -5,15 +5,15 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5434/liquorsgolden
+    url: jdbc:postgresql://viaduct.proxy.rlwy.net:49115/railway
     username: postgres
-    password: 1234
+    password: f*Aa-c1GBe4e+gbGB3FFDg*aFd+cADC-
     test-on-borrow: true
     validation-query: SELECT 1 FROM dual
     flyway:
       baselineOnMigrate: true
-      user: ${DB_USERNAME}
-      password: ${DB_PASSWORD}
+      user: postgres
+      password: f*Aa-c1GBe4e+gbGB3FFDg*aFd+cADC-
       schemas: public
       createSchemas: true
       locations: db/migration, db/specific/h2
