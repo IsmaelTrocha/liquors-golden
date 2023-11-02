@@ -11,5 +11,5 @@ public interface CategoryRepository extends JpaRepository<CategoryDto, Long> {
   Optional<CategoryDto> findByName(String name);
 
   @Query(value = "UPDATE CategoryDto c SET name =:category WHERE c.id =:categoryId")
-  void update(Long categoryId, String category);
+  void updateCategoryById(Long categoryId, String category);
 }
