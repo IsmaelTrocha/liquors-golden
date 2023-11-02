@@ -1,5 +1,7 @@
 package com.liquorsgolden.lq.application;
 
+import com.liquorsgolden.lq.application.cart.AddShoppingCartApplication;
+import com.liquorsgolden.lq.application.cart.GetShoppingCartByIdApplication;
 import com.liquorsgolden.lq.application.category.GetCategoryByIdApplication;
 import com.liquorsgolden.lq.application.image.ImageUploadApplication;
 import com.liquorsgolden.lq.application.products.CreateProductApplication;
@@ -14,6 +16,8 @@ import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
 import com.liquorsgolden.lq.application.proportion.CreateProportionApplication;
 import com.liquorsgolden.lq.application.proportion.GetAllProportionApplication;
 import com.liquorsgolden.lq.application.proportion.GetProportionByIdApplication;
+import com.liquorsgolden.lq.domain.services.cart.AddShoppingCartService;
+import com.liquorsgolden.lq.domain.services.cart.GetShoppingCartByIdService;
 import com.liquorsgolden.lq.domain.services.category.GetCategoryByIdService;
 import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
 import com.liquorsgolden.lq.domain.services.product.CreateProductService;
@@ -128,5 +132,17 @@ public class BeanModuleApplication {
   public GetAllProportionApplication getAllProportionApplication(
       GetAllProportionService getAllProportionService) {
     return new GetAllProportionApplication(getAllProportionService);
+  }
+
+  @Bean
+  public AddShoppingCartApplication addShoppingCartApplication(
+      AddShoppingCartService addShoppingCartService) {
+    return new AddShoppingCartApplication(addShoppingCartService);
+  }
+
+  @Bean
+  public GetShoppingCartByIdApplication cartByIdApplication(
+      GetShoppingCartByIdService getShoppingCartByIdService) {
+    return new GetShoppingCartByIdApplication(getShoppingCartByIdService);
   }
 }
