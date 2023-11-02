@@ -30,8 +30,6 @@ spring:
   flyway:
     enabled: true
 
-
-
   springdoc:
     api-docs:
       enable: 'true'
