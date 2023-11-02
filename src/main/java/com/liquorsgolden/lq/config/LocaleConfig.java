@@ -10,12 +10,10 @@ import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 @Slf4j
 public class LocaleConfig {
 
-
   @Bean
   public AcceptHeaderLocaleResolver localeResolver() {
     final AcceptHeaderLocaleResolver resolver = new AcceptHeaderLocaleResolver();
-    resolver.setDefaultLocale(Locale.getDefault());
-    log.info("your locale is : {}", Locale.getDefault());
+    resolver.setDefaultLocale(Locale.US);
     return resolver;
   }
 }

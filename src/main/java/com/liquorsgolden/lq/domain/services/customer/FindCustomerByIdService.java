@@ -2,7 +2,7 @@ package com.liquorsgolden.lq.domain.services.customer;
 
 import com.liquorsgolden.lq.domain.entities.Customer;
 
-public interface FindCustomerByEmailService {
+public interface FindCustomerByIdService {
 
-  Customer findCustomerByEmail(String email);
+  Customer findCustomerById(Long id);
 }
