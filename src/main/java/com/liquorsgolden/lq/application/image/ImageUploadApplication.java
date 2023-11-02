@@ -1,7 +1,6 @@
 package com.liquorsgolden.lq.application.image;
 
 import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
-import java.awt.image.BufferedImage;
 import lombok.AllArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 

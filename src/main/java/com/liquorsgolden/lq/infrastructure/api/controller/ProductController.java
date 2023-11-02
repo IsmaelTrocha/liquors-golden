@@ -59,10 +59,6 @@ public class ProductController {
     return "Image Uploaded Successfully.";
   }
 
-
-  @GetMapping(value = "/product-all")
-  public List<ProductResponse>
-
   @GetMapping(
       value = "/product-image/{id}",
       produces = MediaType.IMAGE_JPEG_VALUE
