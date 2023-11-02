@@ -13,6 +13,6 @@ public class UpdateCategoryByIdAdapter implements UpdateCategoryByIdService {
 
   @Override
   public void updateCategoryById(Long id, String category) {
-      categoryRepository.updateCategoryById(id, category);
+    categoryRepository.updateCategoryById(id, category);
   }
 }

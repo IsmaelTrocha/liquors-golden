@@ -1,6 +1,5 @@
 package com.liquorsgolden.lq.domain.services.feingclient;
 
-import java.awt.image.BufferedImage;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +24,6 @@ public interface FileManagementService {
       value = "/v1/customer/{customerId}/profile-image",
       consumes = MediaType.MULTIPART_FORM_DATA_VALUE
   )
-
   void uploadCustomerProfileImage(
       @PathVariable("customerId") Long customerId,
       @RequestParam("file") MultipartFile file);

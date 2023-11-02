@@ -11,19 +11,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableFeignClients
 public class LiquorsGoldenApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(LiquorsGoldenApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(LiquorsGoldenApplication.class, args);
+  }
 
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
-			}
-		};
-	}
+  @Bean
+  public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+      @Override
+      public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
+      }
+    };
+  }
 
 }

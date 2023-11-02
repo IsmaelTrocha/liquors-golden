@@ -4,7 +4,6 @@ import com.liquorsgolden.lq.domain.entities.Cart;
 import com.liquorsgolden.lq.domain.services.cart.GetShoppingCartByIdService;
 import com.liquorsgolden.lq.infrastructure.repository.cart.CartDtoMapper;
 import com.liquorsgolden.lq.infrastructure.repository.cart.CartRepository;
-import com.liquorsgolden.lq.shared.exception.code.ExceptionCode;
 import com.liquorsgolden.lq.shared.exception.message.cart.CartNotFoundException;
 import com.liquorsgolden.lq.shared.utils.MessageUtils;
 import lombok.AllArgsConstructor;
@@ -21,6 +20,7 @@ public class GetShoppingCartByIdAdapter implements GetShoppingCartByIdService {
   @Override
   public Cart getCartById(Long id) {
     return cartDtoMapper.toEntity(
-        cartRepository.findById(id).orElseThrow(() -> new CartNotFoundException("Product not found")));
+        cartRepository.findById(id)
+            .orElseThrow(() -> new CartNotFoundException("Product not found")));
   }
 }

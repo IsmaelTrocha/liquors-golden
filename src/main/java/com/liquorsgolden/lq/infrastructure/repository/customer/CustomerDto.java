@@ -26,7 +26,7 @@ public class CustomerDto {
   private String email;
   private int age;
   private String password;
-//  private Boolean enabled = false;
+  //  private Boolean enabled = false;
   private LocalDateTime create_at;
   private String role;
 

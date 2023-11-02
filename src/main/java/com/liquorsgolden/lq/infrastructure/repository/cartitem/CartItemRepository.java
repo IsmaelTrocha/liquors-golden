@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CartItemRepository extends JpaRepository<CartItemDto, Long> {
+
   @Modifying
   @Transactional
   @Query(value = "UPDATE CartItemDto sc SET sc.quantity= :quantity WHERE sc.id =:id")

@@ -1,9 +1,9 @@
 package com.liquorsgolden.lq.infrastructure.repository.order;
 
 import com.liquorsgolden.lq.infrastructure.repository.address.AddressDto;
+import com.liquorsgolden.lq.infrastructure.repository.customer.CustomerDto;
 import com.liquorsgolden.lq.infrastructure.repository.product.ProductDto;
 import com.liquorsgolden.lq.infrastructure.repository.status.StatusDto;
-import com.liquorsgolden.lq.infrastructure.repository.customer.CustomerDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

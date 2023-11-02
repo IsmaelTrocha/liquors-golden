@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AddressRepository extends JpaRepository<AddressDto, Long> {
+
   @Query("SELECT a FROM AddressDto a WHERE a.customer.id = :id")
   List<AddressDto> addressByCustomerIdIn(@Param("id") Long id);
 }
