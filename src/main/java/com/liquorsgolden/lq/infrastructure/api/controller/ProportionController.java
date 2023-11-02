@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping(path = "/api/proportions/")
+@RequestMapping(path = "/api/proportions")
 public class ProportionController {
 
   private final CreateProportionApplication createProportionApplication;
@@ -55,7 +55,7 @@ public class ProportionController {
         HttpStatus.OK);
   }
 
-  @GetMapping(path = "/get{id}")
+  @GetMapping(path = "/get/{id}")
   public ResponseEntity<ProportionResponse> getProportionById(@PathVariable("id") Long id) {
     return new ResponseEntity<>(
         proportionResponseMapper.toDto(getProportionByIdApplication.findById(id)),
