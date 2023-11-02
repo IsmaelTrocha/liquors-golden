@@ -34,6 +34,6 @@ public interface FileManagementService {
       value = "/products/product-image/{productId}",
       produces = MediaType.IMAGE_JPEG_VALUE
   )
-  BufferedImage getProductImage(@PathVariable("productId") Long productId);
+  byte[] getProductImage(@PathVariable("productId") Long productId);
 
 }

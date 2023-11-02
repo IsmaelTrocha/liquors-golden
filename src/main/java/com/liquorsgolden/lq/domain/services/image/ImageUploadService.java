@@ -9,5 +9,5 @@ public interface ImageUploadService {
 
   void uploadCustomerImage(Long customerId, MultipartFile file);
 
-  BufferedImage getProductImage(Long productId);
+  byte[] getProductImage(Long productId);
 }

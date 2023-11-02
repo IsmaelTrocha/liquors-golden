@@ -1,6 +1,7 @@
 package com.liquorsgolden.lq.application.image;
 
 import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
+import java.awt.image.BufferedImage;
 import lombok.AllArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +16,10 @@ public class ImageUploadApplication {
 
   public void uploadCustomerImage(Long id, MultipartFile file) {
     imageUploadService.uploadCustomerImage(id, file);
+  }
+
+  public byte[] getProductImage(Long productId){
+    return imageUploadService.getProductImage(productId);
   }
 
 }

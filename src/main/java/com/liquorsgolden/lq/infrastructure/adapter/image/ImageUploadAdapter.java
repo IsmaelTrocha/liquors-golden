@@ -24,7 +24,7 @@ public class ImageUploadAdapter implements ImageUploadService {
   }
 
   @Override
-  public BufferedImage getProductImage(Long productId) {
-    return null;
+  public byte[] getProductImage(Long productId) {
+    return fileManagementService.getProductImage(productId);
   }
 }
