@@ -29,4 +29,5 @@ public class CustomerDto {
   private Boolean enabled = false;
   private LocalDateTime create_at;
   private String role;
+
 }
