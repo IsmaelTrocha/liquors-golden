@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum MessageCode {
 
   SUCCESSFUL("Message-01", "Message.SUCCESSFUL"),
-  CATEGORY_CREATE_SUCCESSFULLY("Message-02", "Message.CATEGORY_CREATE_SUCCESSFULLY");
+  CATEGORY_CREATE_SUCCESSFULLY("Message-02", "Message.CATEGORY_CREATE_SUCCESSFULLY"),
+  PROPORTION_CREATE_SUCCESSFULLY("Message-03", "Message.PROPORTION_CREATE_SUCCESSFULLY");
   private final String code;
   private final String type;
 

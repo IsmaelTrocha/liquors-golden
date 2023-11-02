@@ -11,6 +11,8 @@ import com.liquorsgolden.lq.application.products.GetAllProductByCategoryIdApplic
 import com.liquorsgolden.lq.application.products.GetProductByIdApplication;
 import com.liquorsgolden.lq.application.products.UpdateProductApplication;
 import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
+import com.liquorsgolden.lq.application.proportion.CreateProportionApplication;
+import com.liquorsgolden.lq.application.proportion.GetAllProportionApplication;
 import com.liquorsgolden.lq.application.proportion.GetProportionByIdApplication;
 import com.liquorsgolden.lq.domain.services.category.GetCategoryByIdService;
 import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
@@ -23,6 +25,8 @@ import com.liquorsgolden.lq.domain.services.product.GetAllProductService;
 import com.liquorsgolden.lq.domain.services.product.GetProductByIdService;
 import com.liquorsgolden.lq.domain.services.product.UpdateProductService;
 import com.liquorsgolden.lq.domain.services.product.UpdateStockProductService;
+import com.liquorsgolden.lq.domain.services.proportion.CreateProportionService;
+import com.liquorsgolden.lq.domain.services.proportion.GetAllProportionService;
 import com.liquorsgolden.lq.domain.services.proportion.GetProportionByIdService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -112,5 +116,17 @@ public class BeanModuleApplication {
   public GetProportionByIdApplication getProportionByIdApplication(
       GetProportionByIdService getProportionByIdService) {
     return new GetProportionByIdApplication(getProportionByIdService);
+  }
+
+  @Bean
+  public CreateProportionApplication createProportionApplication(
+      CreateProportionService createProportionService) {
+    return new CreateProportionApplication(createProportionService);
+  }
+
+  @Bean
+  public GetAllProportionApplication getAllProportionApplication(
+      GetAllProportionService getAllProportionService) {
+    return new GetAllProportionApplication(getAllProportionService);
   }
 }

@@ -1,4 +1,4 @@
-package com.liquorsgolden.lq.infrastructure.api.mapper.request;
+package com.liquorsgolden.lq.infrastructure.api.mapper.request.status;
 
 import com.liquorsgolden.lq.domain.entities.Status;
 import com.liquorsgolden.lq.infrastructure.api.dto.request.status.StatusRequest;
