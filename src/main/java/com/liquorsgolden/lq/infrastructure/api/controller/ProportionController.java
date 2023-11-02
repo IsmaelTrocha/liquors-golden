@@ -48,7 +48,7 @@ public class ProportionController {
         HttpStatus.CREATED);
   }
 
-  @GetMapping
+  @GetMapping(path = "/getAll")
   public ResponseEntity<List<ProportionResponse>> getAllProportions() {
     return new ResponseEntity<>(
         proportionResponseMapper.toDto(getAllProportionApplication.getAllProportion()),
