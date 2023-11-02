@@ -9,6 +9,7 @@ import com.liquorsgolden.lq.infrastructure.api.dto.request.product.ProductReques
 import com.liquorsgolden.lq.infrastructure.api.dto.response.CreateResponse;
 import com.liquorsgolden.lq.infrastructure.api.dto.response.ProductResponse;
 import com.liquorsgolden.lq.infrastructure.api.mapper.request.product.ProductRequestMapper;
+import com.liquorsgolden.lq.infrastructure.api.mapper.response.ProductResponseMapper;
 import com.liquorsgolden.lq.shared.utils.MessageUtils;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -41,6 +42,8 @@ public class ProductController {
   private final ImageUploadApplication imageUploadApplication;
   private final ImageUploadService imageUploadService;
   private final GetAllProductApplication getAllProductApplication;
+  private final ProductResponseMapper productResponseMapper;
+
 
   @PostMapping
   public ResponseEntity<CreateResponse> createProduct(
@@ -57,6 +60,13 @@ public class ProductController {
       @PathVariable("id") Long id) {
     imageUploadService.uploadProductImage(id, file);
     return "Image Uploaded Successfully.";
+  }
+
+  @GetMapping(value = "/getAll")
+  public ResponseEntity<List<ProductResponse>> getAllProduct() {
+    return new ResponseEntity<>(
+        productResponseMapper.toDto(
+            getAllProductApplication.getAllProducts()), HttpStatus.OK);
   }
 
   @GetMapping(

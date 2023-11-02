@@ -14,5 +14,7 @@ public class ProductResponse {
 
   private String name;
   private String description;
-  private BufferedImage productImage;
+  private String imgUrl;
+  private byte[] imageData;
+
 }
