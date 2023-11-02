@@ -21,7 +21,6 @@ public class GetShoppingCartByIdAdapter implements GetShoppingCartByIdService {
   @Override
   public Cart getCartById(Long id) {
     return cartDtoMapper.toEntity(
-        cartRepository.findById(id).orElseThrow(() -> new CartNotFoundException(
-            messageUtils.getMessage(ExceptionCode.CART_NOT_FOUND.getType(), id.toString()))));
+        cartRepository.findById(id).orElseThrow(() -> new CartNotFoundException("Product not found")));
   }
 }

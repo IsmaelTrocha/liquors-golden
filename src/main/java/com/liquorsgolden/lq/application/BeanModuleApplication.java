@@ -3,6 +3,7 @@ package com.liquorsgolden.lq.application;
 import com.liquorsgolden.lq.application.cart.AddShoppingCartApplication;
 import com.liquorsgolden.lq.application.cart.GetShoppingCartByIdApplication;
 import com.liquorsgolden.lq.application.category.GetCategoryByIdApplication;
+import com.liquorsgolden.lq.application.customer.FindCustomerByIdApplication;
 import com.liquorsgolden.lq.application.image.ImageUploadApplication;
 import com.liquorsgolden.lq.application.products.CreateProductApplication;
 import com.liquorsgolden.lq.application.products.DeleteProductByIdApplication;
@@ -19,6 +20,7 @@ import com.liquorsgolden.lq.application.proportion.GetProportionByIdApplication;
 import com.liquorsgolden.lq.domain.services.cart.AddShoppingCartService;
 import com.liquorsgolden.lq.domain.services.cart.GetShoppingCartByIdService;
 import com.liquorsgolden.lq.domain.services.category.GetCategoryByIdService;
+import com.liquorsgolden.lq.domain.services.customer.FindCustomerByIdService;
 import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
 import com.liquorsgolden.lq.domain.services.product.CreateProductService;
 import com.liquorsgolden.lq.domain.services.product.DeleteProductByIdService;
@@ -136,8 +138,10 @@ public class BeanModuleApplication {
 
   @Bean
   public AddShoppingCartApplication addShoppingCartApplication(
-      AddShoppingCartService addShoppingCartService) {
-    return new AddShoppingCartApplication(addShoppingCartService);
+      AddShoppingCartService addShoppingCartService,
+      FindCustomerByIdApplication findCustomerByIdApplication) {
+    return new AddShoppingCartApplication(addShoppingCartService,
+        findCustomerByIdApplication);
   }
 
   @Bean
@@ -145,4 +149,11 @@ public class BeanModuleApplication {
       GetShoppingCartByIdService getShoppingCartByIdService) {
     return new GetShoppingCartByIdApplication(getShoppingCartByIdService);
   }
+
+  @Bean
+  public FindCustomerByIdApplication findCustomerByEmailApplication(
+      FindCustomerByIdService findCustomerByIdService) {
+    return new FindCustomerByIdApplication(findCustomerByIdService);
+  }
+
 }

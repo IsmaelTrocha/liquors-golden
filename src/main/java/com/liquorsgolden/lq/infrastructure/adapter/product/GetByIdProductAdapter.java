@@ -21,8 +21,7 @@ public class GetByIdProductAdapter implements GetProductByIdService {
   @Override
   public Product getProductById(Long id) {
     return productDtoMapper.toEntity(productRepository.findById(id)
-        .orElseThrow(() -> new ProductNotFoundException(
-            messageUtils.getMessage(ExceptionCode.PRODUCT_NOT_FOUND.getType(), id.toString()))));
+        .orElseThrow(() -> new ProductNotFoundException("Product not found")));
   }
 
   @Override

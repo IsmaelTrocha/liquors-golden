@@ -12,7 +12,8 @@ public enum ExceptionCode {
   STATUS_NOT_FOUND("ERR-05", "Exception.STATUS_NOT_FOUND"),
   PROPORTION_NOT_FOUND("ERR-06", "Exception.PROPORTION_NOT_FOUND"),
   PRODUCT_ALREADY_EXISTS("ERR-07", "Exception.PRODUCT_ALREADY_EXISTS"),
-  CART_NOT_FOUND("ERR-08", "Exception.CART_NOT_FOUND");
+  CART_NOT_FOUND("ERR-08", "Exception.CART_NOT_FOUND"),
+  CUSTOMER_NOT_FOUND("ERR-09", "Exception.CUSTOMER_NOT_FOUND");
 
   private final String code;
   private final String type;
