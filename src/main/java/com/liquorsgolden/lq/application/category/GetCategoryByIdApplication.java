@@ -10,7 +10,7 @@ public class GetCategoryByIdApplication {
 
   private final GetCategoryByIdService getCategoryByIdService;
 
-  public Category findById(Long categoryId) {
-    return getCategoryByIdService.findById(categoryId);
+  public Category findById(Long id) {
+    return getCategoryByIdService.findById(id);
   }
 }
