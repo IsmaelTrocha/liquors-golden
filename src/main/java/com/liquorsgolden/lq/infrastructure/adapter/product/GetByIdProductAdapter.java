@@ -24,4 +24,11 @@ public class GetByIdProductAdapter implements GetProductByIdService {
         .orElseThrow(() -> new ProductNotFoundException(
             messageUtils.getMessage(ExceptionCode.PRODUCT_NOT_FOUND.getType(), id.toString()))));
   }
+
+  @Override
+  public Long findTopByOrderByIdDesc() {
+    return productRepository.findTopByOrderByIdDesc();
+  }
+
+
 }

@@ -1,5 +1,7 @@
 package com.liquorsgolden.lq.application;
 
+import com.liquorsgolden.lq.application.category.GetCategoryByIdApplication;
+import com.liquorsgolden.lq.application.image.ImageUploadApplication;
 import com.liquorsgolden.lq.application.products.CreateProductApplication;
 import com.liquorsgolden.lq.application.products.DeleteProductByIdApplication;
 import com.liquorsgolden.lq.application.products.FindAllByNameProductApplication;
@@ -9,6 +11,9 @@ import com.liquorsgolden.lq.application.products.GetAllProductByCategoryIdApplic
 import com.liquorsgolden.lq.application.products.GetProductByIdApplication;
 import com.liquorsgolden.lq.application.products.UpdateProductApplication;
 import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
+import com.liquorsgolden.lq.application.proportion.GetProportionByIdApplication;
+import com.liquorsgolden.lq.domain.services.category.GetCategoryByIdService;
+import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
 import com.liquorsgolden.lq.domain.services.product.CreateProductService;
 import com.liquorsgolden.lq.domain.services.product.DeleteProductByIdService;
 import com.liquorsgolden.lq.domain.services.product.FindAllByNameProductService;
@@ -18,6 +23,7 @@ import com.liquorsgolden.lq.domain.services.product.GetAllProductService;
 import com.liquorsgolden.lq.domain.services.product.GetProductByIdService;
 import com.liquorsgolden.lq.domain.services.product.UpdateProductService;
 import com.liquorsgolden.lq.domain.services.product.UpdateStockProductService;
+import com.liquorsgolden.lq.domain.services.proportion.GetProportionByIdService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,10 +34,15 @@ public class BeanModuleApplication {
   public CreateProductApplication createProductApplication(
       CreateProductService createProductService,
       GetProductByIdApplication getProductApplication,
-      UpdateStockProductService updateStockProductService) {
+      UpdateStockProductService updateStockProductService,
+      GetCategoryByIdApplication getCategoryByIdApplication,
+      GetProportionByIdApplication getProportionByIdApplication) {
     return new CreateProductApplication(createProductService,
         getProductApplication,
-        updateStockProductService);
+        updateStockProductService,
+        getCategoryByIdApplication,
+        getProportionByIdApplication
+    );
   }
 
   @Bean
@@ -82,5 +93,24 @@ public class BeanModuleApplication {
   public UpdateStockProductApplication updateStockProductApplication(
       UpdateStockProductService updateStockProductService) {
     return new UpdateStockProductApplication(updateStockProductService);
+  }
+
+  @Bean
+  public ImageUploadApplication imageUploadApplication(
+      ImageUploadService imageUploadService) {
+    return new ImageUploadApplication(
+        imageUploadService);
+  }
+
+  @Bean
+  public GetCategoryByIdApplication getCategoryByIdApplication(
+      GetCategoryByIdService getCategoryByIdService) {
+    return new GetCategoryByIdApplication(getCategoryByIdService);
+  }
+
+  @Bean
+  public GetProportionByIdApplication getProportionByIdApplication(
+      GetProportionByIdService getProportionByIdService) {
+    return new GetProportionByIdApplication(getProportionByIdService);
   }
 }

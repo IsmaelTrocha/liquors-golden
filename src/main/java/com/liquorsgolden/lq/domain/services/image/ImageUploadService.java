@@ -1,9 +1,13 @@
 package com.liquorsgolden.lq.domain.services.image;
 
-import com.liquorsgolden.lq.domain.entities.ImageUpload;
+import java.awt.image.BufferedImage;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface ImageUploadService {
 
-  ImageUpload upload(MultipartFile uploadFile);
+  void uploadProductImage(Long product, MultipartFile file);
+
+  void uploadCustomerImage(Long customerId, MultipartFile file);
+
+  byte[] getProductImage(Long productId);
 }

@@ -32,6 +32,8 @@ public class ProductDto {
   private String imageUrl;
   private Double price;
   private int stock;
+  @Column(name = "created_by")
+  private String createBy;
   @ManyToOne
   @JoinColumn(name = "category_id")
   private CategoryDto category;
@@ -41,7 +43,7 @@ public class ProductDto {
   @ManyToOne
   @JoinColumn(name = "proportion_id")
   private ProportionDto proportion;
-  @Column(name = "create_date")
+  @Column(name = "creation_date")
   private LocalDateTime createDate;
   @Column(name = "update_date")
   private LocalDateTime updateDate;

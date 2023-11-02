@@ -6,5 +6,6 @@ public interface GetProductByIdService {
 
   Product getProductById(Long id);
 
+  Long findTopByOrderByIdDesc();
 
 }

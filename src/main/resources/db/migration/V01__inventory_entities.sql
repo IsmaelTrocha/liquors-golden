@@ -54,21 +54,26 @@ CREATE TABLE PRODUCTS(
 );
 
 CREATE TABLE IMAGES(
+
   id bigserial PRIMARY KEY,
-  name VARCHAR (255) NOT NULL,
-  resource VARCHAR(255) NOT NULL
+  file_name VARCHAR(255) NOT NULL,
+  creation_date TIMESTAMP
+
 );
 
 CREATE TABLE CUSTOMER(
   id bigserial PRIMARY KEY,
-  first_name VARCHAR(255)  NOT NULL,
+  username VARCHAR(255)  NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL,
+  img_url VARCHAR(255) NOT NULL,
+  token varchar(255) NOT NULL,
   age int NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
   create_at TIMESTAMP,
-  enable boolean NOT NULL,
+  is_active boolean NOT NULL,
   role varchar(15) NOT NULL
   );
 

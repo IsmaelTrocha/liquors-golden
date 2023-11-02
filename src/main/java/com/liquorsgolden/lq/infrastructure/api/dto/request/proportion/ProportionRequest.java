@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProportionRequest {
 
-  private int quantity;
+  private String quantity;
 
 
 }
