@@ -10,7 +10,7 @@ public class FindAllByNameProductApplication {
 
   private final FindAllByNameProductService findAllByNameProductService;
 
-  public List<Product> findAllByPriceProduct(String name) {
+  public List<Product> findAllByNameIn(String name) {
     return findAllByNameProductService.findAllByName(name);
   }
 }

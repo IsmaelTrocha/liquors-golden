@@ -18,6 +18,6 @@ public class FindAllByNameProductAdapter implements FindAllByNameProductService 
 
   @Override
   public List<Product> findAllByName(String name) {
-    return productDtoMapper.toEntity(productRepository.findAllByName(name));
+    return productDtoMapper.toEntity(productRepository.findAllByNameContaining(name));
   }
 }
