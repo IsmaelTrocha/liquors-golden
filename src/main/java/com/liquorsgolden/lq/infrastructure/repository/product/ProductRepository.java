@@ -15,7 +15,8 @@ public interface ProductRepository extends JpaRepository<ProductDto, Long> {
   List<ProductDto> findAllByName(@Param("name") String name);
 
   @Query(value = "SELECT p FROM ProductDto p WHERE p.price >= :minPrice AND p.price <= :maxPrice")
-  List<ProductDto> findAllByPrice(@Param("minPrice") double minPrice, @Param("maxPrice") double maxPrice);
+  List<ProductDto> findAllByPrice(@Param("minPrice") double minPrice,
+      @Param("maxPrice") double maxPrice);
 
   @Query(value = "SELECT p FROM ProductDto p WHERE p.category = :categoryId")
   List<ProductDto> findAllByCategoryId(@Param("categoryId") Long categoryId);

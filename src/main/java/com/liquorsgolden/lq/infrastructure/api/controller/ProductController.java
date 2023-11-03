@@ -44,6 +44,17 @@ public class ProductController {
   private final GetAllProductApplication getAllProductApplication;
   private final ProductResponseMapper productResponseMapper;
 
+  public static BufferedImage byteArrayToImage(byte[] imageBytes) {
+    try {
+      ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
+      BufferedImage image = ImageIO.read(bis);
+      bis.close();
+      return image;
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null; // En caso de error, se puede devolver nulo o manejar la excepción según sea necesario.
+    }
+  }
 
   @PostMapping
   public ResponseEntity<CreateResponse> createProduct(
@@ -78,17 +89,5 @@ public class ProductController {
 
     byte[] image = imageUploadService.getProductImage(id);
     return new ResponseEntity<>(byteArrayToImage(image), HttpStatus.OK);
-  }
-
-  public static BufferedImage byteArrayToImage(byte[] imageBytes) {
-    try {
-      ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-      BufferedImage image = ImageIO.read(bis);
-      bis.close();
-      return image;
-    } catch (IOException e) {
-      e.printStackTrace();
-      return null; // En caso de error, se puede devolver nulo o manejar la excepción según sea necesario.
-    }
   }
 }

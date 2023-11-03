@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface GetAllProportionService {
 
-    List<Proportion> getAllProportion();
+  List<Proportion> getAllProportion();
 }

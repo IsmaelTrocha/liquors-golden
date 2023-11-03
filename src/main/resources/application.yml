@@ -9,15 +9,15 @@ spring:
     basename: i18n/messages
 
   datasource:
-    url: jdbc:postgresql://viaduct.proxy.rlwy.net:49115/railway
-    username: postgres
-    password: f*Aa-c1GBe4e+gbGB3FFDg*aFd+cADC-
+    url: jdbc:postgresql://${DB_HOST}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     test-on-borrow: true
     validation-query: SELECT 1 FROM dual
     flyway:
       baselineOnMigrate: true
-      user: postgres
-      password: f*Aa-c1GBe4e+gbGB3FFDg*aFd+cADC-
+      user: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
       schemas: public
       createSchemas: true
       locations: db/migration, db/specific/h2
@@ -35,4 +35,4 @@ spring:
       enable: 'true'
   swagger-ui:
     enabled: 'true'
-    path: /doc/swagger-ui,html
+    path: /doc/swagger-ui.html

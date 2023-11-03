@@ -9,11 +9,11 @@ public class GetProductByIdApplication {
 
   private final GetProductByIdService getProductByIdService;
 
-  public Product getProductById(Long id){
+  public Product getProductById(Long id) {
     return getProductByIdService.getProductById(id);
   }
 
-  public Long getMaxIdProductId( ) {
+  public Long getMaxIdProductId() {
     return getProductByIdService.findTopByOrderByIdDesc();
   }
 }

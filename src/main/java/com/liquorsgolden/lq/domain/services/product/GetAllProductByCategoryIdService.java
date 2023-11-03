@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface GetAllProductByCategoryIdService {
 
-    List<Product> getProductsByCategory(Long categoryId);
+  List<Product> getProductsByCategory(Long categoryId);
 }

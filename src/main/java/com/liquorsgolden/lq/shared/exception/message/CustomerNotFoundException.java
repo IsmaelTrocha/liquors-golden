@@ -7,6 +7,6 @@ import org.springframework.http.HttpStatus;
 public class CustomerNotFoundException extends BaseException {
 
   public CustomerNotFoundException(String message) {
-    super(false, HttpStatus.NOT_FOUND,message, ExceptionCode.PRODUCT_NOT_FOUND);
+    super(false, HttpStatus.NOT_FOUND, message, ExceptionCode.PRODUCT_NOT_FOUND);
   }
 }

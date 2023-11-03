@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface GetAllProductByProportionIdService {
 
-    List<Product> getProductsByProportion(Long proportionId);
+  List<Product> getProductsByProportion(Long proportionId);
 }

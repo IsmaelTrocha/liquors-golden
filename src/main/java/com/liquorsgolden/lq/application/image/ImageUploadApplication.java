@@ -17,7 +17,7 @@ public class ImageUploadApplication {
     imageUploadService.uploadCustomerImage(id, file);
   }
 
-  public byte[] getProductImage(Long productId){
+  public byte[] getProductImage(Long productId) {
     return imageUploadService.getProductImage(productId);
   }
 

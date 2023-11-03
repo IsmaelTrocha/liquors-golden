@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface GetAllProductService {
 
-    List<Product> getAllProduct();
+  List<Product> getAllProduct();
 }

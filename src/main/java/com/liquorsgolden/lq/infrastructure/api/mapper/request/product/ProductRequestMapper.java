@@ -2,9 +2,9 @@ package com.liquorsgolden.lq.infrastructure.api.mapper.request.product;
 
 import com.liquorsgolden.lq.domain.entities.Product;
 import com.liquorsgolden.lq.infrastructure.api.dto.request.product.ProductRequest;
+import com.liquorsgolden.lq.infrastructure.api.mapper.request.category.CategoryRequestMapper;
 import com.liquorsgolden.lq.infrastructure.api.mapper.request.proportion.ProportionRequestMapper;
 import com.liquorsgolden.lq.infrastructure.api.mapper.request.status.StatusRequestMapper;
-import com.liquorsgolden.lq.infrastructure.api.mapper.request.category.CategoryRequestMapper;
 import com.liquorsgolden.lq.shared.mapper.EntityToDto;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;

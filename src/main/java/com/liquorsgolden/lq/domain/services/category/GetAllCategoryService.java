@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface GetAllCategoryService {
 
-    List<Category> getAllCategorys();
+  List<Category> getAllCategorys();
 }

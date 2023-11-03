@@ -9,7 +9,7 @@ public class FindCustomerByIdApplication {
 
   private final FindCustomerByIdService findCustomerByIdService;
 
-  public Customer exists(Long id){
+  public Customer exists(Long id) {
     return findCustomerByIdService.findCustomerById(id);
   }
 }

@@ -9,7 +9,7 @@ public class CreateCategoryApplication {
 
   private final CreateCategoryService createCategoryService;
 
-  public Category createCategory(Category category){
+  public Category createCategory(Category category) {
 
     return createCategoryService.createCategory(category);
   }
