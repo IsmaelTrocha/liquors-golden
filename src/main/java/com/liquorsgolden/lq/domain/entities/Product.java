@@ -20,6 +20,7 @@ public class Product {
   private int stock;
   private Category category;
   private Status status;
+  private boolean discountActive;
   private Proportion proportion;
   private LocalDateTime createDate;
   private LocalDateTime updateDate;
