@@ -20,9 +20,7 @@ public class LiquorsGoldenApplication {
     return new WebMvcConfigurer() {
       @Override
       public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-            .allowedOrigins("https://liquors-golden-production.up.railway.app/**") // Reemplaza con tu origen permitido
-            .allowedMethods("GET", "POST", "PUT", "DELETE"); // Especifica los métodos permitidos
+        registry.addMapping("/*").allowedOrigins("").allowedMethods("*");
       }
     };
   }
