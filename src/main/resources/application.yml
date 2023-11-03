@@ -5,7 +5,7 @@ server:
 
 spring:
 
-  message:
+  messages:
     basename: i18n/messages
 
   datasource:
