@@ -34,7 +34,6 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping(path = "/api/products")
 @RequiredArgsConstructor
-@CrossOrigin(allowCredentials = "*")
 public class ProductController {
 
   private final CreateProductApplication createProductApplication;
