@@ -15,7 +15,6 @@ public class LiquorsGoldenApplication {
     SpringApplication.run(LiquorsGoldenApplication.class, args);
   }
 
-
   @Bean
   public WebMvcConfigurer corsConfigurer() {
     return new WebMvcConfigurer() {
