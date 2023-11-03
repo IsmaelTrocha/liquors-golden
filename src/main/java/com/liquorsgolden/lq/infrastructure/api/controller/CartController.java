@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/api/cart/")
 @AllArgsConstructor
-@CrossOrigin(allowCredentials = "*")
 public class CartController {
 
   private final AddShoppingCartApplication addShoppingCartApplication;
