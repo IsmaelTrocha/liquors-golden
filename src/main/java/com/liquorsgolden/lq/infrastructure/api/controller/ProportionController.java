@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @RequestMapping(path = "/api/proportions")
-@CrossOrigin(allowCredentials = "true", origins = "*")
 public class ProportionController {
 
   private final CreateProportionApplication createProportionApplication;
