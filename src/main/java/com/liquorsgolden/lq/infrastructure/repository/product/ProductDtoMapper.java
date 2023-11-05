@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants.ComponentModel;
 
 @Mapper(componentModel = ComponentModel.SPRING, uses = {
-    CategoryDtoMapper.class
+        ProductDtoMapper.class
 })
 public interface ProductDtoMapper extends EntityToDto<Product, ProductDto> {
 

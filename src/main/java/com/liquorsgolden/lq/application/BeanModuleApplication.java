@@ -5,6 +5,7 @@ import com.liquorsgolden.lq.application.cart.GetShoppingCartByIdApplication;
 import com.liquorsgolden.lq.application.category.GetCategoryByIdApplication;
 import com.liquorsgolden.lq.application.customer.FindCustomerByIdApplication;
 import com.liquorsgolden.lq.application.image.ImageUploadApplication;
+import com.liquorsgolden.lq.application.order.CreateOrderApplication;
 import com.liquorsgolden.lq.application.products.CreateProductApplication;
 import com.liquorsgolden.lq.application.products.DeleteProductByIdApplication;
 import com.liquorsgolden.lq.application.products.FindAllByNameProductApplication;
@@ -22,6 +23,7 @@ import com.liquorsgolden.lq.domain.services.cart.GetShoppingCartByIdService;
 import com.liquorsgolden.lq.domain.services.category.GetCategoryByIdService;
 import com.liquorsgolden.lq.domain.services.customer.FindCustomerByIdService;
 import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
+import com.liquorsgolden.lq.domain.services.order.CreateOrderService;
 import com.liquorsgolden.lq.domain.services.product.CreateProductService;
 import com.liquorsgolden.lq.domain.services.product.DeleteProductByIdService;
 import com.liquorsgolden.lq.domain.services.product.FindAllByNameProductService;
@@ -39,6 +41,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class BeanModuleApplication {
+
+  @Bean
+  public CreateOrderApplication createOrderApplication(CreateOrderService createOrderService) {
+    return new CreateOrderApplication(createOrderService);
+  }
 
   @Bean
   public CreateProductApplication createProductApplication(

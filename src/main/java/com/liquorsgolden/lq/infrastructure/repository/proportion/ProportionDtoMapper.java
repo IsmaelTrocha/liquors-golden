@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, uses = {
-    StatusDtoMapper.class
+        ProportionDtoMapper.class
 }, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface ProportionDtoMapper extends EntityToDto<Proportion, ProportionDto> {
 
