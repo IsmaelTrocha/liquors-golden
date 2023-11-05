@@ -4,6 +4,7 @@ import com.liquorsgolden.lq.domain.entities.Order;
 import com.liquorsgolden.lq.domain.services.order.CreateOrderService;
 import lombok.AllArgsConstructor;
 
+
 @AllArgsConstructor
 public class CreateOrderApplication {
 

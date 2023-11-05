@@ -24,15 +24,7 @@ import com.liquorsgolden.lq.domain.services.category.GetCategoryByIdService;
 import com.liquorsgolden.lq.domain.services.customer.FindCustomerByIdService;
 import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
 import com.liquorsgolden.lq.domain.services.order.CreateOrderService;
-import com.liquorsgolden.lq.domain.services.product.CreateProductService;
-import com.liquorsgolden.lq.domain.services.product.DeleteProductByIdService;
-import com.liquorsgolden.lq.domain.services.product.FindAllByNameProductService;
-import com.liquorsgolden.lq.domain.services.product.FindAllByPriceProductService;
-import com.liquorsgolden.lq.domain.services.product.GetAllProductByCategoryIdService;
-import com.liquorsgolden.lq.domain.services.product.GetAllProductService;
-import com.liquorsgolden.lq.domain.services.product.GetProductByIdService;
-import com.liquorsgolden.lq.domain.services.product.UpdateProductService;
-import com.liquorsgolden.lq.domain.services.product.UpdateStockProductService;
+import com.liquorsgolden.lq.domain.services.product.*;
 import com.liquorsgolden.lq.domain.services.proportion.CreateProportionService;
 import com.liquorsgolden.lq.domain.services.proportion.GetAllProportionService;
 import com.liquorsgolden.lq.domain.services.proportion.GetProportionByIdService;
@@ -51,12 +43,12 @@ public class BeanModuleApplication {
   public CreateProductApplication createProductApplication(
       CreateProductService createProductService,
       GetProductByIdApplication getProductApplication,
-      UpdateStockProductService updateStockProductService,
+      UpdateProductStockService updateProductStockService,
       GetCategoryByIdApplication getCategoryByIdApplication,
       GetProportionByIdApplication getProportionByIdApplication) {
     return new CreateProductApplication(createProductService,
         getProductApplication,
-        updateStockProductService,
+            updateProductStockService,
         getCategoryByIdApplication,
         getProportionByIdApplication
     );
@@ -108,8 +100,8 @@ public class BeanModuleApplication {
 
   @Bean
   public UpdateStockProductApplication updateStockProductApplication(
-      UpdateStockProductService updateStockProductService) {
-    return new UpdateStockProductApplication(updateStockProductService);
+          UpdateProductStockService updateProductStockService) {
+    return new UpdateStockProductApplication(updateProductStockService);
   }
 
   @Bean

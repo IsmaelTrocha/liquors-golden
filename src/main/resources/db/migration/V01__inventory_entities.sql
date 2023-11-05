@@ -107,6 +107,7 @@ CREATE TABLE ORDERS(
 
   -- Crear la tabla de unión para relacionar ORDERS con PRODUCTS
 CREATE TABLE ORDER_PRODUCTS (
+  id bigserial PRIMARY KEY,
   order_id bigserial,
   product_id bigserial,
   FOREIGN KEY (order_id) REFERENCES ORDERS(id),
