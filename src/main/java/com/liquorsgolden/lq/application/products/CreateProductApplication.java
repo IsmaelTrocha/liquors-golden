@@ -6,7 +6,7 @@ import com.liquorsgolden.lq.domain.entities.Category;
 import com.liquorsgolden.lq.domain.entities.Product;
 import com.liquorsgolden.lq.domain.entities.Proportion;
 import com.liquorsgolden.lq.domain.services.product.CreateProductService;
-import com.liquorsgolden.lq.domain.services.product.UpdateStockProductService;
+import com.liquorsgolden.lq.domain.services.product.UpdateProductStockService;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 
@@ -15,7 +15,7 @@ public class CreateProductApplication {
 
   private final CreateProductService createProductService;
   private final GetProductByIdApplication getProductApplication;
-  private final UpdateStockProductService updateStockProductService;
+  private final UpdateProductStockService updateProductStockService;
   private final GetCategoryByIdApplication getCategoryByIdApplication;
   private final GetProportionByIdApplication getProportionByIdApplication;
 

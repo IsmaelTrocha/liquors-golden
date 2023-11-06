@@ -94,16 +94,23 @@ CREATE TABLE ORDERS(
   id bigserial PRIMARY KEY,
   customer_id bigserial,
   address_id bigserial,
-  product_id bigserial,
-  quantity INT NOT NULL,
-  total_price decimal(10,3) NOT NULL,
+  quantity INT,
+  total_price decimal(10,3),
   creation_date TIMESTAMP,
   delivery_date TIMESTAMP,
   finish_date TIMESTAMP,
   status_id bigserial,
   FOREIGN KEY (customer_id) REFERENCES CUSTOMER(id),
   FOREIGN KEY (address_id) REFERENCES ADDRESSES(id),
-  FOREIGN KEY (status_id) REFERENCES STATUS(id),
+  FOREIGN KEY (status_id) REFERENCES STATUS(id)
+  );
+
+  -- Crear la tabla de unión para relacionar ORDERS con PRODUCTS
+CREATE TABLE ORDER_PRODUCTS (
+  id bigserial PRIMARY KEY,
+  order_id bigserial,
+  product_id bigserial,
+  FOREIGN KEY (order_id) REFERENCES ORDERS(id),
   FOREIGN KEY (product_id) REFERENCES PRODUCTS(id)
   );
 
