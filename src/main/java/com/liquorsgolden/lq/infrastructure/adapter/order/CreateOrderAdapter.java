@@ -57,9 +57,11 @@ public class CreateOrderAdapter implements CreateOrderService {
         OrderDto savedOrderDto = orderRepository.save(orderDto);
 
         // Mapear la orden guardada de nuevo a la entidad Order
-        Order savedOrder = orderDtoMapper.toEntity(savedOrderDto);
 
-        return savedOrder;
+        return orderDtoMapper.toEntity(savedOrderDto);
+
+        //return orderDtoMapper.toEntity(orderRepository.save(orderDtoMapper.toDto(order)));
+
     }
 
     private double calculateTotal(List<Long> productIds) {

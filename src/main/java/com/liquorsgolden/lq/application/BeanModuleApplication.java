@@ -35,8 +35,11 @@ import org.springframework.context.annotation.Configuration;
 public class BeanModuleApplication {
 
   @Bean
-  public CreateOrderApplication createOrderApplication(CreateOrderService createOrderService) {
-    return new CreateOrderApplication(createOrderService);
+  public CreateOrderApplication createOrderApplication(
+          CreateOrderService createOrderService,
+          FindCustomerByIdApplication findCustomerByIdApplication) {
+    return new CreateOrderApplication(createOrderService,
+            findCustomerByIdApplication);
   }
 
   @Bean
