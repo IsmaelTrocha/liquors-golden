@@ -37,4 +37,11 @@ public class UpdateProductStockAdapter implements UpdateProductStockService {
       throw new ProductNotFoundException("El producto con el id " + productId + " not existe");
     }
   }
+
+
+  @Override
+  public void updateStockProduct(int stock, String name) {
+    productRepository.updateStockByName(stock, name);
+  }
+
 }

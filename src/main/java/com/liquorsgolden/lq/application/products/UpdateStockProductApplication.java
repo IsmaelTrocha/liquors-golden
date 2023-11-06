@@ -12,4 +12,8 @@ public class UpdateStockProductApplication {
     updateProductStockService.updateStock(productId, quantity);
   }
 
+  public void updateProductStock(int quantity, String product) {
+    updateProductStockService.updateStockProduct(quantity, product);
+  }
+
 }
