@@ -1,36 +1,38 @@
 server:
-  port: 8083
+  port: 8080
 
 ---
+
 spring:
 
   messages:
-    basename: i18m/messages
+    basename: i18n/messages
 
   datasource:
-    username: ${DB_USERNAME_PROD}
-    url: jdbc:postgresql://${DB_HOST_PROD}/${DB_NAME_PROD}
-    password: ${DB_PASSWORD_PROD}
+    url: jdbc:postgresql://viaduct.proxy.rlwy.net:49115/railway
+    username: postgres
+    password: f*Aa-c1GBe4e+gbGB3FFDg*aFd+cADC-
     test-on-borrow: true
     validation-query: SELECT 1 FROM dual
     flyway:
       baselineOnMigrate: true
-      user: ${DB_USERNAME_PROD}
-      password: ${DB_PASSWORD_PROD}
+      user: postgres
+      password: f*Aa-c1GBe4e+gbGB3FFDg*aFd+cADC-
       schemas: public
       createSchemas: true
       locations: db/migration, db/specific/h2
   jpa:
     show-sql: true
     hibernate:
+      ddl-auto: none
       format-sql: true
-      ddl-auto: update
+
   flyway:
     enabled: true
 
   springdoc:
     api-docs:
-      enabled: 'true'
-    swagger-ui:
-      enabled: 'true'
-      path: /doc/swagger-ui.html
+      enable: 'true'
+  swagger-ui:
+    enabled: 'true'
+    path: /doc/swagger-ui,html
