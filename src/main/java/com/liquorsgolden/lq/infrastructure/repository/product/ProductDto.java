@@ -65,4 +65,10 @@ public class ProductDto {
   @Column(name = "hide_date")
   private LocalDateTime hideDate;
 
+  @Column(name = "alcohol_percentage")
+  private Double alcoholPercentage;
+
+  @Column(name = "iva")
+  private Double iva;
+
 }

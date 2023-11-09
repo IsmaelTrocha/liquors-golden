@@ -36,6 +36,25 @@ public class CreateOrderAdapter implements CreateOrderService {
         // Establecer el total en la orden
         order.setTotal(total);
 
+        // Calcular el iva de los productos
+        double iva = calculateIva(order.getProductIds());
+
+        // Establecer el iva en la orden
+        order.setIva(iva);
+
+        // calcular el total sin iva
+        double totalProducts = total - iva;
+
+        // Establecer el total sin iva en la orden
+        order.setTotalProducts(totalProducts);
+
+        // Calcular la cantidad de productos en la orden
+        int quantity = order.getProductIds().size();
+
+        // Establecer la cantidad en la orden
+        order.setQuantity(quantity);
+
+
         for (Long productId : order.getProductIds()) {
             updateProductStockService.updateStock(productId, 1); // Restar 1 unidad del stock
         }
@@ -74,6 +93,20 @@ public class CreateOrderAdapter implements CreateOrderService {
 
         return total;
     }
+
+    private double calculateIva(List<Long> productIds) {
+        double iva = 0.0;
+
+        for (Long productId : productIds) {
+            Product product = productService.getProductById(productId);
+            iva += product.getIva();
+        }
+
+        return iva;
+    }
+
+
+
 }
 
 

@@ -22,5 +22,6 @@ public class ProductResponse {
   private int stock;
   private boolean discountActive;
   private StatusResponse status;
+  private double alcoholPercentage;
 
 }

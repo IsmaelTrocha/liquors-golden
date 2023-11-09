@@ -21,6 +21,8 @@ public class Order {
   private LocalDateTime deliveryDate;
   private int quantity;
   private Double total;
+  private Double totalProducts;
+  private Double iva;
   private Address address;
   private Status status;
 

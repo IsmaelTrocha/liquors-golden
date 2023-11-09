@@ -28,8 +28,9 @@ public class OrderController {
         Order order = orderRequestMapper.toEntity(orderRequest);
         Order createdOrder = createOrderApplication.createProduct(order);
 
-        // Crear una respuesta que incluye el total, el customer y el id de la venta
         OrderResponse orderResponse = new OrderResponse();
+        orderResponse.setTotalProducts(createdOrder.getTotalProducts());
+        orderResponse.setIva(createdOrder.getIva());
         orderResponse.setTotal(createdOrder.getTotal());
         orderResponse.setCustomerId(createdOrder.getCustomer().getId());
         orderResponse.setOrderId(createdOrder.getId());
