@@ -22,7 +22,7 @@ public class CategoryDto {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
-  @Column(name = "created_by")
+  @Column(name = "create_by")
   private String createBy;
   @Column(name = "creation_date")
   private LocalDateTime creationDate;
