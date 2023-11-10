@@ -41,9 +41,6 @@ public class ProductDto {
   @Column(name = "stock")
   private int stock;
 
-  @Column(name = "created_by")
-  private String createBy;
-
   @ManyToOne
   @JoinColumn(name = "category_id")
   private CategoryDto category;
