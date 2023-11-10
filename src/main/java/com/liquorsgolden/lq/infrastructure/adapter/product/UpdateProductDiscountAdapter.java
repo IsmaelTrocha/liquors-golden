@@ -1,5 +1,6 @@
 package com.liquorsgolden.lq.infrastructure.adapter.product;
 
+import com.liquorsgolden.lq.domain.services.product.UpdateProductDiscountService;
 import com.liquorsgolden.lq.infrastructure.repository.product.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,8 +11,9 @@ public class UpdateProductDiscountAdapter implements UpdateProductDiscountServic
 
   private final ProductRepository productRepository;
 
+
   @Override
-  public void updateProductDiscount(int discount) {
-    productRepository.updateDiscountProduct(discount);
+  public void updateProductDiscount(Double discount) {
+    productRepository.updateDiscount(discount);
   }
 }
