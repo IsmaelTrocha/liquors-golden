@@ -23,13 +23,21 @@ public interface ProductRepository extends JpaRepository<ProductDto, Long> {
   @Query(value = "SELECT p FROM ProductDto p WHERE p.proportion = :proportionId")
   List<ProductDto> findAllByProportionId(@Param("proportionId") Long proportionId);
 
-  @Query(value = "SELECT MAX(p.id) FROM ProductDto p")
+  @Query(value =
+      "SELECT MAX(p.id) "
+      + "FROM ProductDto p")
   Long findTopByOrderByIdDesc();
 
+  @Query(value = "UPDATE ProductDto p SET p.price = :discount WHERE p.id = :productId")
+  void updateProductDiscount(
+      @Param("discount") Double discount,
+      @Param("productId") Long productId);
 
   @Modifying
   @Transactional
-  @Query("UPDATE ProductDto p SET p.stock = :newStock WHERE p.name = :productName")
+  @Query("UPDATE ProductDto"
+      + " p SET p.stock = :newStock "
+      + "WHERE p.name = :productName")
   void updateStockByName(@Param("newStock") int newStock, @Param("productName") String productName);
 
 
