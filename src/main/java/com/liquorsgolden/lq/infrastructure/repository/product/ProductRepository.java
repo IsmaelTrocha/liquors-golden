@@ -28,6 +28,10 @@ public interface ProductRepository extends JpaRepository<ProductDto, Long> {
       + "FROM ProductDto p")
   Long findTopByOrderByIdDesc();
 
+  @Query(value = "UPDATE ProductDto p SET p.price = :discount WHERE p.id = :productId")
+  void updateProductDiscount(
+      @Param("discount") Double discount,
+      @Param("productId") Long productId);
 
   @Modifying
   @Transactional

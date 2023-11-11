@@ -13,7 +13,7 @@ public class UpdateProductDiscountAdapter implements UpdateProductDiscountServic
 
 
   @Override
-  public void updateProductDiscount(Double discount) {
-    productRepository.updateDiscount(discount);
+  public void updateProductDiscount(Double discount,Long id) {
+    productRepository.updateProductDiscount(discount,id);
   }
 }
