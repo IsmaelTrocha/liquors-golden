@@ -9,15 +9,15 @@ spring:
     basename: i18n/messages
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: 1234
+    url: jdbc:postgresql://${DB_HOST}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     test-on-borrow: true
     validation-query: SELECT 1 FROM dual
     flyway:
       baselineOnMigrate: true
-      user: postgres
-      password: 1234
+      user: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
       schemas: public
       createSchemas: true
       locations: db/migration, db/specific/h2
