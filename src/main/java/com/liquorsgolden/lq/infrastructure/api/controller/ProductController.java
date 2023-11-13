@@ -19,6 +19,7 @@ import com.liquorsgolden.lq.infrastructure.api.dto.response.ProductResponse;
 import com.liquorsgolden.lq.infrastructure.api.mapper.request.product.ProductRequestMapper;
 import com.liquorsgolden.lq.infrastructure.api.mapper.request.product.UpdateProductRequestMapper;
 import com.liquorsgolden.lq.infrastructure.api.mapper.response.ProductResponseMapper;
+import com.liquorsgolden.lq.infrastructure.repository.product.ProductRepository;
 import com.liquorsgolden.lq.shared.exception.code.MessageCode;
 import com.liquorsgolden.lq.shared.utils.MessageUtils;
 import java.awt.image.BufferedImage;
@@ -62,7 +63,7 @@ public class ProductController {
   private final ImageUploadApplication imageUploadApplication;
   private final ImageUploadService imageUploadService;
   private final MessageUtils messageUtils;
-
+  private final ProductRepository productRepository;
 
   @DeleteMapping(path = "/remove/id")
   public ResponseEntity<EntityResponse> deleteProductById(@PathVariable("id") Long id) {
@@ -102,6 +103,11 @@ public class ProductController {
         getAllProductByCategoryIdApplication.findAllProductByCategoryId(id)), HttpStatus.OK);
   }
 
+  @GetMapping(path = "/liquors")
+  public ResponseEntity<List<ProductResponse>> getAllLiquors() {
+
+    return new ResponseEntity<>(productResponseMapper.toDto(getAllProductApplication.getAllLiquors()),HttpStatus.OK);
+  }
 
   @GetMapping(path = "/between/{minPrice}-{maxPrice}")
   public ResponseEntity<List<ProductResponse>> getAllProductByPriceIn(
