@@ -4,7 +4,6 @@ server:
 ---
 
 spring:
-
   messages:
     basename: i18n/messages
 
@@ -35,4 +34,8 @@ spring:
       enable: 'true'
   swagger-ui:
     enabled: 'true'
-    path: /doc/swagger-ui,html
+    path: /doc/swagger-ui.html  # Fix the typo here
+
+swagger:
+  schemes:
+    - https  # Add this property to specify HTTPS
