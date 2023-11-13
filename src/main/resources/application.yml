@@ -36,6 +36,12 @@ spring:
     enabled: 'true'
     path: /doc/swagger-ui.html  # Fix the typo here
 
-swagger:
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Your API
+  host: liquors-golden-production.up.railway.app
+  basePath: /api
   schemes:
-    - https  # Add this property to specify HTTPS
+    - https
+  # Add this property to specify HTTPS
