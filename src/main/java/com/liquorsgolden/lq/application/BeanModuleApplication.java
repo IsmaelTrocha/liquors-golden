@@ -13,6 +13,7 @@ import com.liquorsgolden.lq.application.products.FindAllProductByPriceApplicatio
 import com.liquorsgolden.lq.application.products.GetAllProductApplication;
 import com.liquorsgolden.lq.application.products.GetAllProductByCategoryIdApplication;
 import com.liquorsgolden.lq.application.products.GetProductByIdApplication;
+import com.liquorsgolden.lq.application.products.GetStatusByIdApplication;
 import com.liquorsgolden.lq.application.products.UpdateProductApplication;
 import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
 import com.liquorsgolden.lq.application.proportion.CreateProportionApplication;
@@ -31,6 +32,7 @@ import com.liquorsgolden.lq.domain.services.product.FindAllByPriceProductService
 import com.liquorsgolden.lq.domain.services.product.GetAllProductByCategoryIdService;
 import com.liquorsgolden.lq.domain.services.product.GetAllProductService;
 import com.liquorsgolden.lq.domain.services.product.GetProductByIdService;
+import com.liquorsgolden.lq.domain.services.product.GetStatusByIdService;
 import com.liquorsgolden.lq.domain.services.product.UpdateProductService;
 import com.liquorsgolden.lq.domain.services.product.UpdateProductStockService;
 import com.liquorsgolden.lq.domain.services.proportion.CreateProportionService;
@@ -105,8 +107,12 @@ public class BeanModuleApplication {
 
   @Bean
   public UpdateProductApplication updateProductApplication(
-      UpdateProductService updateProductService) {
-    return new UpdateProductApplication(updateProductService);
+      UpdateProductService updateProductService,
+      GetStatusByIdApplication getStatusByIdApplication,
+      GetProportionByIdApplication getProportionByIdApplication,
+      GetCategoryByIdApplication getCategoryByIdApplication) {
+    return new UpdateProductApplication(updateProductService, getStatusByIdApplication,
+        getProportionByIdApplication, getCategoryByIdApplication);
   }
 
   @Bean
@@ -165,4 +171,9 @@ public class BeanModuleApplication {
       FindCustomerByIdService findCustomerByIdService) {
     return new FindCustomerByIdApplication(findCustomerByIdService);
   }
- }
+
+  @Bean
+  public GetStatusByIdApplication getStatusByIdApplication(GetStatusByIdService getStatusByIdService){
+    return new GetStatusByIdApplication(getStatusByIdService);
+  }
+}

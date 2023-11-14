@@ -4,5 +4,5 @@ import com.liquorsgolden.lq.domain.entities.Product;
 
 public interface UpdateProductService {
 
-  Product updateProduct(Product product);
+  void updateProduct(Product product);
 }

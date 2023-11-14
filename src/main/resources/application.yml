@@ -1,12 +1,13 @@
 server:
   port: 8080
 
+spring:
+ config:
+   activate:
+     on-profile: local
 ---
 
 spring:
-  messages:
-    basename: i18n/messages
-
   datasource:
     url: jdbc:postgresql://${DB_HOST_PROD}/${DB_NAME_PROD}
     username: ${DB_USERNAME_PROD}
@@ -34,14 +35,7 @@ spring:
       enable: 'true'
   swagger-ui:
     enabled: 'true'
-    path: /doc/swagger-ui.html  # Fix the typo here
+    path: /doc/swagger-ui.html  # Fix the typo here.
 
-  swagger: "2.0"
-  info:
-    version: 1.0.0
-    title: Your API
-  host: liquors-golden-production.up.railway.app
-  basePath: /api
-  schemes:
-    - https
-  # Add this property to specify HTTPS
+  messages:
+    basename: i18n/messages

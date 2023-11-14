@@ -83,7 +83,7 @@ public class ProductController {
         updateProductRequestMapper.toEntity(updateProductRequest));
     return new ResponseEntity<>(new EntityResponse(
         messageUtils.getMessage(
-            MessageCode.PRODUCT_UPDATED_SUCCESSFULLY.getCode()),
+            MessageCode.PRODUCT_UPDATED_SUCCESSFULLY.getType()),
         messageUtils.getMessage(
             MessageCode.PRODUCT_UPDATED_SUCCESSFULLY.getType()),
         LocalDateTime.now()), HttpStatus.OK);
@@ -105,7 +105,6 @@ public class ProductController {
 
   @GetMapping(path = "/liquors")
   public ResponseEntity<List<ProductResponse>> getAllLiquors() {
-
     return new ResponseEntity<>(productResponseMapper.toDto(getAllProductApplication.getAllLiquors()),HttpStatus.OK);
   }
 
