@@ -65,7 +65,7 @@ public class ProductController {
   private final MessageUtils messageUtils;
   private final ProductRepository productRepository;
 
-  @DeleteMapping(path = "/remove/id")
+  @DeleteMapping(path = "/remove/{id}")
   public ResponseEntity<EntityResponse> deleteProductById(@PathVariable("id") Long id) {
     deleteProductByIdApplication.deleteProductById(id);
     return new ResponseEntity<>(new EntityResponse(
