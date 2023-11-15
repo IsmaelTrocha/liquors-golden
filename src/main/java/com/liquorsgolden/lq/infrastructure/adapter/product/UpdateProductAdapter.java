@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 public class UpdateProductAdapter implements UpdateProductService {
 
   private final ProductRepository productRepository;
-  private final ProductDtoMapper productDtoMapper;
 
   @Override
   @Modifying
@@ -26,6 +25,7 @@ public class UpdateProductAdapter implements UpdateProductService {
             product.getPrice(),
             product.getStatus().getId(),
             product.getDescription(),
+            product.getName(),
             product.getId());
   }
 }
