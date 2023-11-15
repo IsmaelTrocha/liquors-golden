@@ -68,9 +68,7 @@ public class ProductController {
   @DeleteMapping(path = "/remove/{id}")
   public ResponseEntity<EntityResponse> deleteProductById(@PathVariable("id") Long id) {
     deleteProductByIdApplication.deleteProductById(id);
-    return new ResponseEntity<>(new EntityResponse(
-        messageUtils.getMessage(
-            MessageCode.PRODUCT_DELETED_SUCCESSFULLY.getCode()),
+    return new ResponseEntity<>(new EntityResponse( "200",
         messageUtils.getMessage(
             MessageCode.PRODUCT_DELETED_SUCCESSFULLY.getType()),
         LocalDateTime.now()), HttpStatus.OK);
