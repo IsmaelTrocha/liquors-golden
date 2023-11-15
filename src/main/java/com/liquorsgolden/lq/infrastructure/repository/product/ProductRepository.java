@@ -1,6 +1,7 @@
 package com.liquorsgolden.lq.infrastructure.repository.product;
 
 import jakarta.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -11,9 +12,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductDto, Long> {
 
-   List<ProductDto> findAllByNameContaining(String name);
+  List<ProductDto> findAllByNameContaining(String name);
 
   List<ProductDto> findByCategoryNameNotIn(List<String> categoriesToExclude);
+
   @Query(value = "SELECT p FROM ProductDto p WHERE p.price >= :minPrice AND p.price <= :maxPrice")
   List<ProductDto> findAllByPrice(@Param("minPrice") double minPrice,
       @Param("maxPrice") double maxPrice);
@@ -26,13 +28,16 @@ public interface ProductRepository extends JpaRepository<ProductDto, Long> {
 
   @Query(value =
       "SELECT MAX(p.id) "
-      + "FROM ProductDto p")
+          + "FROM ProductDto p")
   Long findTopByOrderByIdDesc();
 
-  @Query(value = "UPDATE ProductDto p SET p.price = :discount WHERE p.id = :productId")
   @Modifying
+  @Query(value = "UPDATE ProductDto p SET p.offerPrice = :discount, p.updateDate = :updateDate, p.discountActive= :isActive WHERE p.id = :productId")
+  @Transactional
   void updateProductDiscount(
       @Param("discount") Double discount,
+      @Param("updateDate") LocalDateTime updateDate,
+      @Param("isActive") boolean isActive,
       @Param("productId") Long productId);
 
   @Modifying

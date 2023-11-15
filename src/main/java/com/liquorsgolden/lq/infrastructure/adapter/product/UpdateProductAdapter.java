@@ -2,7 +2,6 @@ package com.liquorsgolden.lq.infrastructure.adapter.product;
 
 import com.liquorsgolden.lq.domain.entities.Product;
 import com.liquorsgolden.lq.domain.services.product.UpdateProductService;
-import com.liquorsgolden.lq.infrastructure.repository.product.ProductDtoMapper;
 import com.liquorsgolden.lq.infrastructure.repository.product.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -20,12 +19,12 @@ public class UpdateProductAdapter implements UpdateProductService {
   @Transactional
   public void updateProduct(Product product) {
 
-        productRepository.updateProduct(
-            product.getCategory().getId(),
-            product.getPrice(),
-            product.getStatus().getId(),
-            product.getDescription(),
-            product.getName(),
-            product.getId());
+    productRepository.updateProduct(
+        product.getCategory().getId(),
+        product.getPrice(),
+        product.getStatus().getId(),
+        product.getDescription(),
+        product.getName(),
+        product.getId());
   }
 }

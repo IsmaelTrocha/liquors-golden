@@ -5,8 +5,6 @@ import static org.mockito.Mockito.when;
 
 import com.liquorsgolden.lq.domain.entities.Category;
 import com.liquorsgolden.lq.domain.services.category.CreateCategoryService;
-import java.time.LocalDateTime;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,8 +19,6 @@ public class CreateCategoryApplicationTest {
 
   @InjectMocks
   private CreateCategoryApplication createCategoryApplication;
-
-
 
 
   @Test

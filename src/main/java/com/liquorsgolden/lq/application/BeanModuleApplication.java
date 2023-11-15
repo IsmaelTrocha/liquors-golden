@@ -15,7 +15,9 @@ import com.liquorsgolden.lq.application.products.GetAllProductByCategoryIdApplic
 import com.liquorsgolden.lq.application.products.GetProductByIdApplication;
 import com.liquorsgolden.lq.application.products.GetStatusByIdApplication;
 import com.liquorsgolden.lq.application.products.UpdateProductApplication;
+import com.liquorsgolden.lq.application.products.UpdateProductDiscountApplication;
 import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
+import com.liquorsgolden.lq.application.products.proccess.ProductValidations;
 import com.liquorsgolden.lq.application.proportion.CreateProportionApplication;
 import com.liquorsgolden.lq.application.proportion.GetAllProportionApplication;
 import com.liquorsgolden.lq.application.proportion.GetProportionByIdApplication;
@@ -33,11 +35,13 @@ import com.liquorsgolden.lq.domain.services.product.GetAllProductByCategoryIdSer
 import com.liquorsgolden.lq.domain.services.product.GetAllProductService;
 import com.liquorsgolden.lq.domain.services.product.GetProductByIdService;
 import com.liquorsgolden.lq.domain.services.product.GetStatusByIdService;
+import com.liquorsgolden.lq.domain.services.product.UpdateProductDiscountService;
 import com.liquorsgolden.lq.domain.services.product.UpdateProductService;
 import com.liquorsgolden.lq.domain.services.product.UpdateProductStockService;
 import com.liquorsgolden.lq.domain.services.proportion.CreateProportionService;
 import com.liquorsgolden.lq.domain.services.proportion.GetAllProportionService;
 import com.liquorsgolden.lq.domain.services.proportion.GetProportionByIdService;
+import com.liquorsgolden.lq.shared.utils.MessageUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -46,10 +50,10 @@ public class BeanModuleApplication {
 
   @Bean
   public CreateOrderApplication createOrderApplication(
-          CreateOrderService createOrderService,
-          FindCustomerByIdApplication findCustomerByIdApplication) {
+      CreateOrderService createOrderService,
+      FindCustomerByIdApplication findCustomerByIdApplication) {
     return new CreateOrderApplication(createOrderService,
-            findCustomerByIdApplication);
+        findCustomerByIdApplication);
   }
 
   @Bean
@@ -61,7 +65,7 @@ public class BeanModuleApplication {
       GetProportionByIdApplication getProportionByIdApplication) {
     return new CreateProductApplication(createProductService,
         getProductApplication,
-            updateProductStockService,
+        updateProductStockService,
         getCategoryByIdApplication,
         getProportionByIdApplication
     );
@@ -117,7 +121,7 @@ public class BeanModuleApplication {
 
   @Bean
   public UpdateStockProductApplication updateStockProductApplication(
-          UpdateProductStockService updateProductStockService) {
+      UpdateProductStockService updateProductStockService) {
     return new UpdateStockProductApplication(updateProductStockService);
   }
 
@@ -173,7 +177,22 @@ public class BeanModuleApplication {
   }
 
   @Bean
-  public GetStatusByIdApplication getStatusByIdApplication(GetStatusByIdService getStatusByIdService){
+  public GetStatusByIdApplication getStatusByIdApplication(
+      GetStatusByIdService getStatusByIdService) {
     return new GetStatusByIdApplication(getStatusByIdService);
+  }
+
+  @Bean
+  public UpdateProductDiscountApplication productDiscountApplication(
+      UpdateProductDiscountService updateProductDiscountService,
+      GetProductByIdApplication getProductByIdApplication,
+      ProductValidations productValidations) {
+    return new UpdateProductDiscountApplication(updateProductDiscountService,
+        getProductByIdApplication, productValidations);
+  }
+
+  @Bean
+  public ProductValidations productValidations(MessageUtils messageUtils) {
+    return new ProductValidations(messageUtils);
   }
 }

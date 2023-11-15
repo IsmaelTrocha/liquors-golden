@@ -9,6 +9,7 @@ import com.liquorsgolden.lq.application.products.GetAllProductApplication;
 import com.liquorsgolden.lq.application.products.GetAllProductByCategoryIdApplication;
 import com.liquorsgolden.lq.application.products.GetProductByIdApplication;
 import com.liquorsgolden.lq.application.products.UpdateProductApplication;
+import com.liquorsgolden.lq.application.products.UpdateProductDiscountApplication;
 import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
 import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
 import com.liquorsgolden.lq.infrastructure.api.dto.request.product.ProductRequest;
@@ -56,6 +57,7 @@ public class ProductController {
   private final UpdateProductApplication updateProductApplication;
   private final UpdateStockProductApplication updateStockProductApplication;
   private final ProductRequestMapper productRequestMapper;
+  private final UpdateProductDiscountApplication updateProductDiscountApplication;
   private final GetProductByIdApplication getProductByIdApplication;
   private final GetAllProductApplication getAllProductApplication;
   private final ProductResponseMapper productResponseMapper;
@@ -65,10 +67,22 @@ public class ProductController {
   private final MessageUtils messageUtils;
   private final ProductRepository productRepository;
 
+  public static BufferedImage byteArrayToImage(byte[] imageBytes) {
+    try {
+      ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
+      BufferedImage image = ImageIO.read(bis);
+      bis.close();
+      return image;
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null; // En caso de error, se puede devolver nulo o manejar la excepción según sea necesario.
+    }
+  }
+
   @DeleteMapping(path = "/remove/{id}")
   public ResponseEntity<EntityResponse> deleteProductById(@PathVariable("id") Long id) {
     deleteProductByIdApplication.deleteProductById(id);
-    return new ResponseEntity<>(new EntityResponse( "200",
+    return new ResponseEntity<>(new EntityResponse("200",
         messageUtils.getMessage(
             MessageCode.PRODUCT_DELETED_SUCCESSFULLY.getType()),
         LocalDateTime.now()), HttpStatus.OK);
@@ -87,6 +101,14 @@ public class ProductController {
         LocalDateTime.now()), HttpStatus.OK);
   }
 
+  @PutMapping(path = "/discount/{quantity}/{id}")
+  public ResponseEntity<ProductResponse> updateProductDiscount(
+      @PathVariable("quantity") Double discount, @PathVariable("id") Long id) {
+    updateProductDiscountApplication.updateProductDiscount(discount, id);
+    return new ResponseEntity<>(
+        productResponseMapper.toDto(getProductByIdApplication.getProductById(id)), HttpStatus.OK);
+  }
+
   @GetMapping(path = "/between/{name}")
   public ResponseEntity<List<ProductResponse>> getAllProductByNameIn(
       @PathVariable("name") String name) {
@@ -103,7 +125,8 @@ public class ProductController {
 
   @GetMapping(path = "/liquors")
   public ResponseEntity<List<ProductResponse>> getAllLiquors() {
-    return new ResponseEntity<>(productResponseMapper.toDto(getAllProductApplication.getAllLiquors()),HttpStatus.OK);
+    return new ResponseEntity<>(
+        productResponseMapper.toDto(getAllProductApplication.getAllLiquors()), HttpStatus.OK);
   }
 
   @GetMapping(path = "/between/{minPrice}-{maxPrice}")
@@ -153,17 +176,5 @@ public class ProductController {
 
     byte[] image = imageUploadService.getProductImage(id);
     return new ResponseEntity<>(byteArrayToImage(image), HttpStatus.OK);
-  }
-
-  public static BufferedImage byteArrayToImage(byte[] imageBytes) {
-    try {
-      ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-      BufferedImage image = ImageIO.read(bis);
-      bis.close();
-      return image;
-    } catch (IOException e) {
-      e.printStackTrace();
-      return null; // En caso de error, se puede devolver nulo o manejar la excepción según sea necesario.
-    }
   }
 }

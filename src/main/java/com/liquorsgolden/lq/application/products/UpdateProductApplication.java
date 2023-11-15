@@ -17,6 +17,7 @@ public class UpdateProductApplication {
   private final GetStatusByIdApplication getStatusByIdApplication;
   private final GetProportionByIdApplication getProportionByIdApplication;
   private final GetCategoryByIdApplication getCategoryByIdApplication;
+
   public void updateProduct(Product product) {
     Category category = getCategoryByIdApplication.findById(product.getCategory().getId());
     Proportion proportion = getProportionByIdApplication.findById(product.getProportion().getId());

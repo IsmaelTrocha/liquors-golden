@@ -4,11 +4,17 @@ import com.liquorsgolden.lq.infrastructure.repository.category.CategoryDto;
 import com.liquorsgolden.lq.infrastructure.repository.order.OrderDto;
 import com.liquorsgolden.lq.infrastructure.repository.proportion.ProportionDto;
 import com.liquorsgolden.lq.infrastructure.repository.status.StatusDto;
-import jakarta.persistence.*;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,7 +46,10 @@ public class ProductDto {
 
   @Column(name = "stock")
   private int stock;
-
+  @Column(name = "discount_active")
+  private boolean discountActive;
+  @Column(name = "offer_price")
+  private Double offerPrice;
   @ManyToOne
   @JoinColumn(name = "category_id")
   private CategoryDto category;

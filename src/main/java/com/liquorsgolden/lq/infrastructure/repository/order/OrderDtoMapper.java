@@ -6,7 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, uses = {
-        OrderDtoMapper.class
+    OrderDtoMapper.class
 })
 public interface OrderDtoMapper extends EntityToDto<Order, OrderDto> {
+
 }

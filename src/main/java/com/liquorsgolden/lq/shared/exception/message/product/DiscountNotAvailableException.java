@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 
 public class DiscountNotAvailableException extends BaseException {
 
-  public DiscountNotAvailableException(String message){
-    super(false, HttpStatus.BAD_REQUEST,message, ExceptionCode.PRODUCT_NOT_FOUND);
+  public DiscountNotAvailableException(String message) {
+    super(false, HttpStatus.BAD_REQUEST, message, ExceptionCode.PRODUCT_NOT_FOUND);
   }
 }

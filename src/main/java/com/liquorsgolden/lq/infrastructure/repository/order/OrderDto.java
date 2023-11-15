@@ -37,9 +37,9 @@ public class OrderDto {
 
   @ManyToMany
   @JoinTable(
-          name = "ORDER_PRODUCTS",
-          joinColumns = @JoinColumn(name = "order_id"),
-          inverseJoinColumns = @JoinColumn(name = "product_id")
+      name = "ORDER_PRODUCTS",
+      joinColumns = @JoinColumn(name = "order_id"),
+      inverseJoinColumns = @JoinColumn(name = "product_id")
   )
   private List<ProductDto> products;
 
