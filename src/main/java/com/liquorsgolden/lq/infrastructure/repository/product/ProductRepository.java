@@ -1,6 +1,7 @@
 package com.liquorsgolden.lq.infrastructure.repository.product;
 
 import jakarta.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -29,10 +30,13 @@ public interface ProductRepository extends JpaRepository<ProductDto, Long> {
       + "FROM ProductDto p")
   Long findTopByOrderByIdDesc();
 
-  @Query(value = "UPDATE ProductDto p SET p.price = :discount WHERE p.id = :productId")
   @Modifying
+  @Query(value = "UPDATE ProductDto p SET p.offerPrice = :discount, p.updateDate = :updateDate, p.discountActive= :isActive WHERE p.id = :productId")
+  @Transactional
   void updateProductDiscount(
       @Param("discount") Double discount,
+      @Param("updateDate") LocalDateTime updateDate,
+      @Param("isActive") boolean isActive,
       @Param("productId") Long productId);
 
   @Modifying

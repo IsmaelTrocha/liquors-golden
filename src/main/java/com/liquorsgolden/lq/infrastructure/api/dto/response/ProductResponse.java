@@ -17,7 +17,7 @@ public class ProductResponse {
   private String imageUrl;
   private byte[] imageData;
   private Double price;
-  private int discountAmount;
+  private Double offerPrice;
   private CategoryResponse category;
   private ProportionResponse proportion;
   private int stock;

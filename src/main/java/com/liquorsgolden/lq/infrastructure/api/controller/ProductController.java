@@ -9,6 +9,7 @@ import com.liquorsgolden.lq.application.products.GetAllProductApplication;
 import com.liquorsgolden.lq.application.products.GetAllProductByCategoryIdApplication;
 import com.liquorsgolden.lq.application.products.GetProductByIdApplication;
 import com.liquorsgolden.lq.application.products.UpdateProductApplication;
+import com.liquorsgolden.lq.application.products.UpdateProductDiscountApplication;
 import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
 import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
 import com.liquorsgolden.lq.infrastructure.api.dto.request.product.ProductRequest;
@@ -56,6 +57,7 @@ public class ProductController {
   private final UpdateProductApplication updateProductApplication;
   private final UpdateStockProductApplication updateStockProductApplication;
   private final ProductRequestMapper productRequestMapper;
+  private final UpdateProductDiscountApplication updateProductDiscountApplication;
   private final GetProductByIdApplication getProductByIdApplication;
   private final GetAllProductApplication getAllProductApplication;
   private final ProductResponseMapper productResponseMapper;
@@ -87,6 +89,13 @@ public class ProductController {
         LocalDateTime.now()), HttpStatus.OK);
   }
 
+  @PutMapping(path = "/discount/{quantity}/{id}")
+  public ResponseEntity<ProductResponse> updateProductDiscount(
+      @PathVariable("quantity") Double discount, @PathVariable("id") Long id) {
+    updateProductDiscountApplication.updateProductDiscount(discount, id);
+    return new ResponseEntity<>(
+        productResponseMapper.toDto(getProductByIdApplication.getProductById(id)), HttpStatus.OK);
+  }
   @GetMapping(path = "/between/{name}")
   public ResponseEntity<List<ProductResponse>> getAllProductByNameIn(
       @PathVariable("name") String name) {
