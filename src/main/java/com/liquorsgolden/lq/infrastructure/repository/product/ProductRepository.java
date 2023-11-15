@@ -49,7 +49,7 @@ public interface ProductRepository extends JpaRepository<ProductDto, Long> {
       "p.category.id = :categoryId, " +
       "p.price = :newPrice, " +
       "p.status.id = :statusId, " +
-      "p.description = :newDescription " +
+      "p.description = :newDescription," +
       "p.name = :name" +
       "WHERE p.id = :id")
   void updateProduct(
