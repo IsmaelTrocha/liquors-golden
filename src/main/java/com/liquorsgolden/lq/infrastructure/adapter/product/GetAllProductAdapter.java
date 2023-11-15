@@ -4,6 +4,7 @@ import com.liquorsgolden.lq.domain.entities.Product;
 import com.liquorsgolden.lq.domain.services.product.GetAllProductService;
 import com.liquorsgolden.lq.infrastructure.repository.product.ProductDtoMapper;
 import com.liquorsgolden.lq.infrastructure.repository.product.ProductRepository;
+import java.util.Arrays;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,8 @@ public class GetAllProductAdapter implements GetAllProductService {
 
   @Override
   public List<Product> getAllLiquors() {
-    return productDtoMapper.toEntity(productRepository.findByCategoryNameIsNot("Cerveza"));
+
+    return productDtoMapper.toEntity(productRepository.findByCategoryNameNotIn(List.of("Cerveza", "Otros")));
   }
 
   @Override
