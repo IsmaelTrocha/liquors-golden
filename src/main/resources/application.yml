@@ -1,13 +1,13 @@
 server:
   port: 8080
 
+spring:
+ config:
+   activate:
+     on-profile: local
 ---
 
 spring:
-
-  messages:
-    basename: i18n/messages
-
   datasource:
     url: jdbc:postgresql://${DB_HOST_PROD}/${DB_NAME_PROD}
     username: ${DB_USERNAME_PROD}
@@ -35,4 +35,7 @@ spring:
       enable: 'true'
   swagger-ui:
     enabled: 'true'
-    path: /doc/swagger-ui,html
+    path: /doc/swagger-ui.html  # Fix the typo here.
+
+  messages:
+    basename: i18n/messages
