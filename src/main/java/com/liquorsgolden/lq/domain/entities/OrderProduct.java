@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderProduct {
 
-    private Long id;
-    private Order order;
-    private Product product;
+  private Long id;
+  private Order order;
+  private Product product;
 }

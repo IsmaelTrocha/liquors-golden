@@ -67,10 +67,22 @@ public class ProductController {
   private final MessageUtils messageUtils;
   private final ProductRepository productRepository;
 
+  public static BufferedImage byteArrayToImage(byte[] imageBytes) {
+    try {
+      ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
+      BufferedImage image = ImageIO.read(bis);
+      bis.close();
+      return image;
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null; // En caso de error, se puede devolver nulo o manejar la excepción según sea necesario.
+    }
+  }
+
   @DeleteMapping(path = "/remove/{id}")
   public ResponseEntity<EntityResponse> deleteProductById(@PathVariable("id") Long id) {
     deleteProductByIdApplication.deleteProductById(id);
-    return new ResponseEntity<>(new EntityResponse( "200",
+    return new ResponseEntity<>(new EntityResponse("200",
         messageUtils.getMessage(
             MessageCode.PRODUCT_DELETED_SUCCESSFULLY.getType()),
         LocalDateTime.now()), HttpStatus.OK);
@@ -96,6 +108,7 @@ public class ProductController {
     return new ResponseEntity<>(
         productResponseMapper.toDto(getProductByIdApplication.getProductById(id)), HttpStatus.OK);
   }
+
   @GetMapping(path = "/between/{name}")
   public ResponseEntity<List<ProductResponse>> getAllProductByNameIn(
       @PathVariable("name") String name) {
@@ -112,7 +125,8 @@ public class ProductController {
 
   @GetMapping(path = "/liquors")
   public ResponseEntity<List<ProductResponse>> getAllLiquors() {
-    return new ResponseEntity<>(productResponseMapper.toDto(getAllProductApplication.getAllLiquors()),HttpStatus.OK);
+    return new ResponseEntity<>(
+        productResponseMapper.toDto(getAllProductApplication.getAllLiquors()), HttpStatus.OK);
   }
 
   @GetMapping(path = "/between/{minPrice}-{maxPrice}")
@@ -162,17 +176,5 @@ public class ProductController {
 
     byte[] image = imageUploadService.getProductImage(id);
     return new ResponseEntity<>(byteArrayToImage(image), HttpStatus.OK);
-  }
-
-  public static BufferedImage byteArrayToImage(byte[] imageBytes) {
-    try {
-      ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-      BufferedImage image = ImageIO.read(bis);
-      bis.close();
-      return image;
-    } catch (IOException e) {
-      e.printStackTrace();
-      return null; // En caso de error, se puede devolver nulo o manejar la excepción según sea necesario.
-    }
   }
 }

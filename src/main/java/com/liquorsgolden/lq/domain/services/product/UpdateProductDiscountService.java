@@ -4,5 +4,5 @@ import java.time.LocalDateTime;
 
 public interface UpdateProductDiscountService {
 
-  void updateProductDiscount(Double discount, LocalDateTime updateDate,Long id);
+  void updateProductDiscount(Double discount, LocalDateTime updateDate, Long id);
 }

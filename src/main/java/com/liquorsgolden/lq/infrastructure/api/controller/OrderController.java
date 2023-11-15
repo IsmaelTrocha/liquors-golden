@@ -21,22 +21,22 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 public class OrderController {
 
-    private final CreateOrderApplication createOrderApplication;
-    private final OrderRequestMapper orderRequestMapper;
+  private final CreateOrderApplication createOrderApplication;
+  private final OrderRequestMapper orderRequestMapper;
 
-    @PostMapping("/create")
-    @Operation(summary = "Crear una orden", description = "Crea una nueva orden con los datos proporcionados en la solicitud.")
-    public ResponseEntity<OrderResponse> createOrder(@RequestBody OrderRequest orderRequest) {
-        Order order = orderRequestMapper.toEntity(orderRequest);
-        Order createdOrder = createOrderApplication.createProduct(order);
+  @PostMapping("/create")
+  @Operation(summary = "Crear una orden", description = "Crea una nueva orden con los datos proporcionados en la solicitud.")
+  public ResponseEntity<OrderResponse> createOrder(@RequestBody OrderRequest orderRequest) {
+    Order order = orderRequestMapper.toEntity(orderRequest);
+    Order createdOrder = createOrderApplication.createProduct(order);
 
-        // Crear una respuesta que incluye el total, el customer y el id de la venta
-        OrderResponse orderResponse = new OrderResponse();
-        orderResponse.setTotal(createdOrder.getTotal());
-        orderResponse.setCustomerId(createdOrder.getCustomer().getId());
-        orderResponse.setOrderId(createdOrder.getId());
+    // Crear una respuesta que incluye el total, el customer y el id de la venta
+    OrderResponse orderResponse = new OrderResponse();
+    orderResponse.setTotal(createdOrder.getTotal());
+    orderResponse.setCustomerId(createdOrder.getCustomer().getId());
+    orderResponse.setOrderId(createdOrder.getId());
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(orderResponse);
-    }
+    return ResponseEntity.status(HttpStatus.CREATED).body(orderResponse);
+  }
 
 }

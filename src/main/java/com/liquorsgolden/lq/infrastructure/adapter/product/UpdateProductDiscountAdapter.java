@@ -14,7 +14,7 @@ public class UpdateProductDiscountAdapter implements UpdateProductDiscountServic
 
 
   @Override
-  public void updateProductDiscount(Double discount, LocalDateTime updateDate,Long id) {
-    productRepository.updateProductDiscount(discount,updateDate,true,id);
+  public void updateProductDiscount(Double discount, LocalDateTime updateDate, Long id) {
+    productRepository.updateProductDiscount(discount, updateDate, true, id);
   }
 }

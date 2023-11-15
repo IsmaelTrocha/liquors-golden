@@ -1,4 +1,5 @@
 package com.liquorsgolden.lq.config;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -6,10 +7,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        WebMvcConfigurer.super.addCorsMappings(registry);
-        registry.addMapping("/api/**").allowedOrigins("*").allowedMethods("*");
-    }
+  @Override
+  public void addCorsMappings(CorsRegistry registry) {
+    WebMvcConfigurer.super.addCorsMappings(registry);
+    registry.addMapping("/api/**").allowedOrigins("*").allowedMethods("*");
+  }
 
 }

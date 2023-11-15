@@ -6,5 +6,6 @@ import java.util.List;
 public interface GetAllProductService {
 
   List<Product> getAllLiquors();
+
   List<Product> getAllProduct();
 }

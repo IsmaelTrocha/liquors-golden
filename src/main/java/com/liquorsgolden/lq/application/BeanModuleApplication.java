@@ -50,10 +50,10 @@ public class BeanModuleApplication {
 
   @Bean
   public CreateOrderApplication createOrderApplication(
-          CreateOrderService createOrderService,
-          FindCustomerByIdApplication findCustomerByIdApplication) {
+      CreateOrderService createOrderService,
+      FindCustomerByIdApplication findCustomerByIdApplication) {
     return new CreateOrderApplication(createOrderService,
-            findCustomerByIdApplication);
+        findCustomerByIdApplication);
   }
 
   @Bean
@@ -65,7 +65,7 @@ public class BeanModuleApplication {
       GetProportionByIdApplication getProportionByIdApplication) {
     return new CreateProductApplication(createProductService,
         getProductApplication,
-            updateProductStockService,
+        updateProductStockService,
         getCategoryByIdApplication,
         getProportionByIdApplication
     );
@@ -121,7 +121,7 @@ public class BeanModuleApplication {
 
   @Bean
   public UpdateStockProductApplication updateStockProductApplication(
-          UpdateProductStockService updateProductStockService) {
+      UpdateProductStockService updateProductStockService) {
     return new UpdateStockProductApplication(updateProductStockService);
   }
 
@@ -177,7 +177,8 @@ public class BeanModuleApplication {
   }
 
   @Bean
-  public GetStatusByIdApplication getStatusByIdApplication(GetStatusByIdService getStatusByIdService){
+  public GetStatusByIdApplication getStatusByIdApplication(
+      GetStatusByIdService getStatusByIdService) {
     return new GetStatusByIdApplication(getStatusByIdService);
   }
 
