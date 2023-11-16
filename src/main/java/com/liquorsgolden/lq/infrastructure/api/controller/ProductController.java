@@ -8,7 +8,6 @@ import com.liquorsgolden.lq.application.products.FindAllProductByPriceApplicatio
 import com.liquorsgolden.lq.application.products.GetAllProductApplication;
 import com.liquorsgolden.lq.application.products.GetAllProductByCategoryIdApplication;
 import com.liquorsgolden.lq.application.products.GetProductByIdApplication;
-import com.liquorsgolden.lq.application.products.UpdateProductApplication;
 import com.liquorsgolden.lq.application.products.UpdateProductDiscountApplication;
 import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
 import com.liquorsgolden.lq.application.products.*;

@@ -31,17 +31,14 @@ public class OrderController {
     Order createdOrder = createOrderApplication.createProduct(order);
 
     // Crear una respuesta que incluye el total, el customer y el id de la venta
-    OrderResponse orderResponse = new OrderResponse();
-    orderResponse.setTotal(createdOrder.getTotal());
-    orderResponse.setCustomerId(createdOrder.getCustomer().getId());
-    orderResponse.setOrderId(createdOrder.getId());
-        OrderResponse orderResponse = new OrderResponse();
-        orderResponse.setTotalProducts(createdOrder.getTotalProducts());
-        orderResponse.setIva(createdOrder.getIva());
-        orderResponse.setConsumo(createdOrder.getConsumo());
-        orderResponse.setTotal(createdOrder.getTotal());
-        orderResponse.setCustomerId(createdOrder.getCustomer().getId());
-        orderResponse.setOrderId(createdOrder.getId());
+      OrderResponse orderResponse = new OrderResponse();
+      orderResponse.setTotalProducts(createdOrder.getTotalProducts());
+      orderResponse.setIva(createdOrder.getIva());
+      orderResponse.setConsumo(createdOrder.getConsumo());
+      orderResponse.setTotal(createdOrder.getTotal());
+      orderResponse.setCustomerId(createdOrder.getCustomer().getId());
+      orderResponse.setOrderId(createdOrder.getId());
+
 
     return ResponseEntity.status(HttpStatus.CREATED).body(orderResponse);
   }

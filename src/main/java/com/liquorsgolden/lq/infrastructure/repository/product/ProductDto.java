@@ -46,8 +46,10 @@ public class ProductDto {
 
   @Column(name = "stock")
   private int stock;
+
   @Column(name = "discount_active")
   private boolean discountActive;
+
   @Column(name = "offer_price")
   private Double offerPrice;
   @ManyToOne
