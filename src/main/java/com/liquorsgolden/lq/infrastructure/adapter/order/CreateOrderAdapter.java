@@ -39,11 +39,17 @@ public class CreateOrderAdapter implements CreateOrderService {
         // Calcular el iva de los productos
         double iva = calculateIva(order.getProductIds());
 
+        // Calcular el consumo de los productos
+        double consumo = calculateconsumo(order.getProductIds());
+
+        // Establecer el consumo en la orden
+        order.setConsumo(consumo);
+
         // Establecer el iva en la orden
         order.setIva(iva);
 
         // calcular el total sin iva
-        double totalProducts = total - iva;
+        double totalProducts = total - iva - consumo;
 
         // Establecer el total sin iva en la orden
         order.setTotalProducts(totalProducts);
@@ -103,6 +109,17 @@ public class CreateOrderAdapter implements CreateOrderService {
         }
 
         return iva;
+    }
+
+    private double calculateconsumo(List<Long> productIds) {
+        double consumo = 0.0;
+
+        for (Long productId : productIds) {
+            Product product = productService.getProductById(productId);
+            consumo += product.getConsumo();
+        }
+
+        return consumo;
     }
 
 

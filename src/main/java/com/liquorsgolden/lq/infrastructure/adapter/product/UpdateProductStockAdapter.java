@@ -31,12 +31,17 @@ public class UpdateProductStockAdapter implements UpdateProductStockService {
       product.setStock(updatedStock);
       product.setUpdateDate(LocalDateTime.now());
 
+      // Aumentar soldUnits
+      int updatedSoldUnits = product.getSoldUnits() + quantity;
+      product.setSoldUnits(updatedSoldUnits);
+
       productDtoMapper.toEntity(productRepository.save(product));
     } else {
       // Lanzar una excepción ProductNotFoundException si el producto no se encuentra
-      throw new ProductNotFoundException("El producto con el id " + productId + " not existe");
+      throw new ProductNotFoundException("El producto con el id " + productId + " no existe");
     }
   }
+
 
 
   @Override

@@ -31,6 +31,7 @@ public class OrderController {
         OrderResponse orderResponse = new OrderResponse();
         orderResponse.setTotalProducts(createdOrder.getTotalProducts());
         orderResponse.setIva(createdOrder.getIva());
+        orderResponse.setConsumo(createdOrder.getConsumo());
         orderResponse.setTotal(createdOrder.getTotal());
         orderResponse.setCustomerId(createdOrder.getCustomer().getId());
         orderResponse.setOrderId(createdOrder.getId());

@@ -65,6 +65,9 @@ public class OrderDto {
   @Column(name = "iva")
   private Double iva;
 
+  @Column(name = "consumo")
+  private Double consumo;
+
   @ManyToOne
   @JoinColumn(name = "address_id")
   private AddressDto address;

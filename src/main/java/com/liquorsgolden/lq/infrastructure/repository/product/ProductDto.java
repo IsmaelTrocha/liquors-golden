@@ -71,4 +71,11 @@ public class ProductDto {
   @Column(name = "iva")
   private Double iva;
 
+  @Column(name = "consumo")
+  private Double consumo;
+
+  @Column(name = "sold_units")
+  private int soldUnits;
+
+
 }

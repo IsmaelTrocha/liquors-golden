@@ -50,6 +50,8 @@ CREATE TABLE PRODUCTS(
     proportion_id bigserial,
     alcohol_percentage DECIMAL(10,3) NOT NULL,
     iva decimal(10,3),
+    consumo decimal(10,3),
+    sold_units int,
     FOREIGN KEY (proportion_id) REFERENCES PROPORTION(id),
     FOREIGN KEY (category_id) REFERENCES CATEGORY(id),
     FOREIGN KEY (status_id) REFERENCES STATUS(id)
@@ -103,6 +105,7 @@ CREATE TABLE ORDERS(
   finish_date TIMESTAMP,
   status_id bigserial,
   iva decimal(10,3),
+  consumo decimal(10,3),
   total_products decimal(10,3),
   FOREIGN KEY (customer_id) REFERENCES CUSTOMER(id),
   FOREIGN KEY (address_id) REFERENCES ADDRESSES(id),
@@ -152,5 +155,7 @@ VALUES ('Tequila', 'Ismael.trocha@hotmail.com', NOW());
 INSERT INTO CATEGORY (name, create_by, creation_date)
 VALUES ('Cerveza', 'Ismael.trocha@hotmail.com', NOW());
 
+INSERT INTO CATEGORY (name, create_by, creation_date)
+VALUES ('Otros', 'Ismael.trocha@hotmail.com', NOW());
 
 INSERT INTO STATUS(name) VALUES ('ACTIVE');

@@ -27,5 +27,6 @@ public class Product {
   private LocalDateTime hideDate;
   private Double alcoholPercentage;
   private Double iva;
-
+  private Double consumo;
+  private int soldUnits;
 }

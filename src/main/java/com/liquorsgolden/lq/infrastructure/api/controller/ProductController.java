@@ -1,15 +1,7 @@
 package com.liquorsgolden.lq.infrastructure.api.controller;
 
 import com.liquorsgolden.lq.application.image.ImageUploadApplication;
-import com.liquorsgolden.lq.application.products.CreateProductApplication;
-import com.liquorsgolden.lq.application.products.DeleteProductByIdApplication;
-import com.liquorsgolden.lq.application.products.FindAllByNameProductApplication;
-import com.liquorsgolden.lq.application.products.FindAllProductByPriceApplication;
-import com.liquorsgolden.lq.application.products.GetAllProductApplication;
-import com.liquorsgolden.lq.application.products.GetAllProductByCategoryIdApplication;
-import com.liquorsgolden.lq.application.products.GetProductByIdApplication;
-import com.liquorsgolden.lq.application.products.UpdateProductApplication;
-import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
+import com.liquorsgolden.lq.application.products.*;
 import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
 import com.liquorsgolden.lq.infrastructure.api.dto.request.product.ProductRequest;
 import com.liquorsgolden.lq.infrastructure.api.dto.request.product.UpdateProductRequest;
@@ -31,15 +23,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
@@ -60,6 +44,7 @@ public class ProductController {
   private final ProductResponseMapper productResponseMapper;
   private final UpdateProductRequestMapper updateProductRequestMapper;
   private final ImageUploadApplication imageUploadApplication;
+  private final GetBestSellingProductsApplication getBestSellingProductsApplication;
   private final ImageUploadService imageUploadService;
   private final MessageUtils messageUtils;
 
@@ -132,6 +117,12 @@ public class ProductController {
     return new ResponseEntity<>(
         productResponseMapper.toDto(
             getAllProductApplication.getAllProducts()), HttpStatus.OK);
+  }
+
+  @GetMapping("/best-selling")
+  public ResponseEntity<List<ProductResponse>> getBestSellingProducts(@RequestParam(name = "minSoldUnits", defaultValue = "20") int minSoldUnits) {
+    return new ResponseEntity<>(
+            productResponseMapper.toDto(getBestSellingProductsApplication.getBestSellingProducts(minSoldUnits)), HttpStatus.OK);
   }
 
   @GetMapping(value = "/get/{id}")

@@ -49,4 +49,6 @@ public interface ProductRepository extends JpaRepository<ProductDto, Long> {
       @Param("id") Long id
   );
 
+  @Query("SELECT p FROM ProductDto p WHERE p.soldUnits >= :minSoldUnits")
+  List<ProductDto> findBestSellingProducts(@Param("minSoldUnits") int minSoldUnits);
 }

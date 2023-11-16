@@ -6,15 +6,7 @@ import com.liquorsgolden.lq.application.category.GetCategoryByIdApplication;
 import com.liquorsgolden.lq.application.customer.FindCustomerByIdApplication;
 import com.liquorsgolden.lq.application.image.ImageUploadApplication;
 import com.liquorsgolden.lq.application.order.CreateOrderApplication;
-import com.liquorsgolden.lq.application.products.CreateProductApplication;
-import com.liquorsgolden.lq.application.products.DeleteProductByIdApplication;
-import com.liquorsgolden.lq.application.products.FindAllByNameProductApplication;
-import com.liquorsgolden.lq.application.products.FindAllProductByPriceApplication;
-import com.liquorsgolden.lq.application.products.GetAllProductApplication;
-import com.liquorsgolden.lq.application.products.GetAllProductByCategoryIdApplication;
-import com.liquorsgolden.lq.application.products.GetProductByIdApplication;
-import com.liquorsgolden.lq.application.products.UpdateProductApplication;
-import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
+import com.liquorsgolden.lq.application.products.*;
 import com.liquorsgolden.lq.application.proportion.CreateProportionApplication;
 import com.liquorsgolden.lq.application.proportion.GetAllProportionApplication;
 import com.liquorsgolden.lq.application.proportion.GetProportionByIdApplication;
@@ -156,6 +148,12 @@ public class BeanModuleApplication {
   public FindCustomerByIdApplication findCustomerByEmailApplication(
       FindCustomerByIdService findCustomerByIdService) {
     return new FindCustomerByIdApplication(findCustomerByIdService);
+  }
+
+  @Bean
+  public GetBestSellingProductsApplication getBestSellingProductsApplication(
+          GetBestSellingProductsService getBestSellingProductsService) {
+    return new GetBestSellingProductsApplication(getBestSellingProductsService);
   }
 
 }
