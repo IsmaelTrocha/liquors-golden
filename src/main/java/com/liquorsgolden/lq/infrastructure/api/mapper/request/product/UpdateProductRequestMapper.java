@@ -4,6 +4,7 @@ import com.liquorsgolden.lq.domain.entities.Product;
 import com.liquorsgolden.lq.infrastructure.api.dto.request.product.UpdateProductRequest;
 import com.liquorsgolden.lq.infrastructure.api.mapper.request.category.CategoryRequestMapper;
 import com.liquorsgolden.lq.infrastructure.api.mapper.request.proportion.ProportionRequestMapper;
+import com.liquorsgolden.lq.infrastructure.api.mapper.request.status.StatusRequestMapper;
 import com.liquorsgolden.lq.shared.mapper.EntityToDto;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
@@ -12,7 +13,8 @@ import org.mapstruct.MappingConstants.ComponentModel;
 
 @Mapper(componentModel = ComponentModel.SPRING, uses = {
     CategoryRequestMapper.class,
-    ProportionRequestMapper.class
+    ProportionRequestMapper.class,
+    StatusRequestMapper.class
 }, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface UpdateProductRequestMapper extends EntityToDto<Product, UpdateProductRequest> {
 

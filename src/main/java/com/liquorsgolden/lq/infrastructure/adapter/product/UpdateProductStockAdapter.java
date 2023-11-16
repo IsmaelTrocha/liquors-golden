@@ -1,17 +1,15 @@
 package com.liquorsgolden.lq.infrastructure.adapter.product;
 
-import com.liquorsgolden.lq.domain.entities.Product;
 import com.liquorsgolden.lq.domain.services.product.UpdateProductStockService;
 import com.liquorsgolden.lq.infrastructure.repository.product.ProductDto;
 import com.liquorsgolden.lq.infrastructure.repository.product.ProductDtoMapper;
 import com.liquorsgolden.lq.infrastructure.repository.product.ProductRepository;
 import com.liquorsgolden.lq.shared.exception.message.product.ProductNotFoundException;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.Optional;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor

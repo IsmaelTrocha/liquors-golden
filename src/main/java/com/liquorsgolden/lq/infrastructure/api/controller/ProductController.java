@@ -1,6 +1,16 @@
 package com.liquorsgolden.lq.infrastructure.api.controller;
 
 import com.liquorsgolden.lq.application.image.ImageUploadApplication;
+import com.liquorsgolden.lq.application.products.CreateProductApplication;
+import com.liquorsgolden.lq.application.products.DeleteProductByIdApplication;
+import com.liquorsgolden.lq.application.products.FindAllByNameProductApplication;
+import com.liquorsgolden.lq.application.products.FindAllProductByPriceApplication;
+import com.liquorsgolden.lq.application.products.GetAllProductApplication;
+import com.liquorsgolden.lq.application.products.GetAllProductByCategoryIdApplication;
+import com.liquorsgolden.lq.application.products.GetProductByIdApplication;
+import com.liquorsgolden.lq.application.products.UpdateProductApplication;
+import com.liquorsgolden.lq.application.products.UpdateProductDiscountApplication;
+import com.liquorsgolden.lq.application.products.UpdateStockProductApplication;
 import com.liquorsgolden.lq.application.products.*;
 import com.liquorsgolden.lq.domain.services.image.ImageUploadService;
 import com.liquorsgolden.lq.infrastructure.api.dto.request.product.ProductRequest;
@@ -11,6 +21,7 @@ import com.liquorsgolden.lq.infrastructure.api.dto.response.ProductResponse;
 import com.liquorsgolden.lq.infrastructure.api.mapper.request.product.ProductRequestMapper;
 import com.liquorsgolden.lq.infrastructure.api.mapper.request.product.UpdateProductRequestMapper;
 import com.liquorsgolden.lq.infrastructure.api.mapper.response.ProductResponseMapper;
+import com.liquorsgolden.lq.infrastructure.repository.product.ProductRepository;
 import com.liquorsgolden.lq.shared.exception.code.MessageCode;
 import com.liquorsgolden.lq.shared.utils.MessageUtils;
 import java.awt.image.BufferedImage;
@@ -39,6 +50,7 @@ public class ProductController {
   private final UpdateProductApplication updateProductApplication;
   private final UpdateStockProductApplication updateStockProductApplication;
   private final ProductRequestMapper productRequestMapper;
+  private final UpdateProductDiscountApplication updateProductDiscountApplication;
   private final GetProductByIdApplication getProductByIdApplication;
   private final GetAllProductApplication getAllProductApplication;
   private final ProductResponseMapper productResponseMapper;
@@ -47,14 +59,24 @@ public class ProductController {
   private final GetBestSellingProductsApplication getBestSellingProductsApplication;
   private final ImageUploadService imageUploadService;
   private final MessageUtils messageUtils;
+  private final ProductRepository productRepository;
 
+  public static BufferedImage byteArrayToImage(byte[] imageBytes) {
+    try {
+      ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
+      BufferedImage image = ImageIO.read(bis);
+      bis.close();
+      return image;
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null; // En caso de error, se puede devolver nulo o manejar la excepción según sea necesario.
+    }
+  }
 
-  @DeleteMapping(path = "/remove/id")
+  @DeleteMapping(path = "/remove/{id}")
   public ResponseEntity<EntityResponse> deleteProductById(@PathVariable("id") Long id) {
     deleteProductByIdApplication.deleteProductById(id);
-    return new ResponseEntity<>(new EntityResponse(
-        messageUtils.getMessage(
-            MessageCode.PRODUCT_DELETED_SUCCESSFULLY.getCode()),
+    return new ResponseEntity<>(new EntityResponse("200",
         messageUtils.getMessage(
             MessageCode.PRODUCT_DELETED_SUCCESSFULLY.getType()),
         LocalDateTime.now()), HttpStatus.OK);
@@ -67,10 +89,18 @@ public class ProductController {
         updateProductRequestMapper.toEntity(updateProductRequest));
     return new ResponseEntity<>(new EntityResponse(
         messageUtils.getMessage(
-            MessageCode.PRODUCT_UPDATED_SUCCESSFULLY.getCode()),
+            MessageCode.PRODUCT_UPDATED_SUCCESSFULLY.getType()),
         messageUtils.getMessage(
             MessageCode.PRODUCT_UPDATED_SUCCESSFULLY.getType()),
         LocalDateTime.now()), HttpStatus.OK);
+  }
+
+  @PutMapping(path = "/discount/{quantity}/{id}")
+  public ResponseEntity<ProductResponse> updateProductDiscount(
+      @PathVariable("quantity") Double discount, @PathVariable("id") Long id) {
+    updateProductDiscountApplication.updateProductDiscount(discount, id);
+    return new ResponseEntity<>(
+        productResponseMapper.toDto(getProductByIdApplication.getProductById(id)), HttpStatus.OK);
   }
 
   @GetMapping(path = "/between/{name}")
@@ -87,6 +117,11 @@ public class ProductController {
         getAllProductByCategoryIdApplication.findAllProductByCategoryId(id)), HttpStatus.OK);
   }
 
+  @GetMapping(path = "/liquors")
+  public ResponseEntity<List<ProductResponse>> getAllLiquors() {
+    return new ResponseEntity<>(
+        productResponseMapper.toDto(getAllProductApplication.getAllLiquors()), HttpStatus.OK);
+  }
 
   @GetMapping(path = "/between/{minPrice}-{maxPrice}")
   public ResponseEntity<List<ProductResponse>> getAllProductByPriceIn(
@@ -141,17 +176,5 @@ public class ProductController {
 
     byte[] image = imageUploadService.getProductImage(id);
     return new ResponseEntity<>(byteArrayToImage(image), HttpStatus.OK);
-  }
-
-  public static BufferedImage byteArrayToImage(byte[] imageBytes) {
-    try {
-      ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-      BufferedImage image = ImageIO.read(bis);
-      bis.close();
-      return image;
-    } catch (IOException e) {
-      e.printStackTrace();
-      return null; // En caso de error, se puede devolver nulo o manejar la excepción según sea necesario.
-    }
   }
 }

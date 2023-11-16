@@ -11,12 +11,13 @@ import lombok.NoArgsConstructor;
 
 public class ProductResponse {
 
+  private Long id;
   private String name;
   private String description;
   private String imageUrl;
   private byte[] imageData;
   private Double price;
-  private int discountAmount;
+  private Double offerPrice;
   private CategoryResponse category;
   private ProportionResponse proportion;
   private int stock;

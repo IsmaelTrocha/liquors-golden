@@ -13,4 +13,8 @@ public class GetAllProductApplication {
   public List<Product> getAllProducts() {
     return getAllProductService.getAllProduct();
   }
+
+  public List<Product> getAllLiquors() {
+    return getAllProductService.getAllLiquors();
+  }
 }

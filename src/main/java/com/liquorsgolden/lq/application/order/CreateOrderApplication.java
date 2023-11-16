@@ -9,11 +9,11 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CreateOrderApplication {
 
-    private final CreateOrderService createOrderService;
-    private final FindCustomerByIdApplication findCustomerByIdApplication;
+  private final CreateOrderService createOrderService;
+  private final FindCustomerByIdApplication findCustomerByIdApplication;
 
-    public Order createProduct(Order order) {
-        findCustomerByIdApplication.exists(order.getCustomer().getId());
-        return createOrderService.createOrder(order);
-    }
+  public Order createProduct(Order order) {
+    findCustomerByIdApplication.exists(order.getCustomer().getId());
+    return createOrderService.createOrder(order);
+  }
 }

@@ -16,6 +16,13 @@ public class GetAllProductAdapter implements GetAllProductService {
   private final ProductDtoMapper productDtoMapper;
 
   @Override
+  public List<Product> getAllLiquors() {
+
+    return productDtoMapper.toEntity(
+        productRepository.findByCategoryNameNotIn(List.of("Cerveza", "Otros")));
+  }
+
+  @Override
   public List<Product> getAllProduct() {
     return productDtoMapper.toEntity(productRepository.findAll());
   }

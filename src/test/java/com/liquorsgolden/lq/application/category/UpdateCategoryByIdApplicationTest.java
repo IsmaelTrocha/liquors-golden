@@ -1,6 +1,8 @@
 package com.liquorsgolden.lq.application.category;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import com.liquorsgolden.lq.domain.services.category.UpdateCategoryByIdService;
 import com.liquorsgolden.lq.shared.exception.message.category.CategoryNotFoundException;
