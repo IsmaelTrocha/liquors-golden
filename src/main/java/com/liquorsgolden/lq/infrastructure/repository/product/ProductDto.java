@@ -46,8 +46,10 @@ public class ProductDto {
 
   @Column(name = "stock")
   private int stock;
+
   @Column(name = "discount_active")
   private boolean discountActive;
+
   @Column(name = "offer_price")
   private Double offerPrice;
   @ManyToOne
@@ -70,5 +72,18 @@ public class ProductDto {
 
   @Column(name = "hide_date")
   private LocalDateTime hideDate;
+
+  @Column(name = "alcohol_percentage")
+  private Double alcoholPercentage;
+
+  @Column(name = "iva")
+  private Double iva;
+
+  @Column(name = "consumo")
+  private Double consumo;
+
+  @Column(name = "sold_units")
+  private int soldUnits;
+
 
 }

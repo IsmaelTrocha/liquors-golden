@@ -59,6 +59,15 @@ public class OrderDto {
   @Column(name = "total_price")
   private Double total;
 
+  @Column(name = "total_products")
+  private Double totalProducts;
+
+  @Column(name = "iva")
+  private Double iva;
+
+  @Column(name = "consumo")
+  private Double consumo;
+
   @ManyToOne
   @JoinColumn(name = "address_id")
   private AddressDto address;

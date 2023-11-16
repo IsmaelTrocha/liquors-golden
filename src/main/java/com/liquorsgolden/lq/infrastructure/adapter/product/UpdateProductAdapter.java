@@ -14,7 +14,6 @@ public class UpdateProductAdapter implements UpdateProductService {
 
   private final ProductRepository productRepository;
 
-  @Override
   @Modifying
   @Transactional
   public void updateProduct(Product product) {

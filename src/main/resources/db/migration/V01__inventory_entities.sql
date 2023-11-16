@@ -41,13 +41,18 @@ CREATE TABLE PRODUCTS(
     stock int,
     category_id bigserial,
     creation_date TIMESTAMP,
-    discount_amount int,
+    discount_active boolean,
+    offer_price decimal(10,3),
     price DECIMAL(10,3) NOT NULL,
     update_date TIMESTAMP,
     hide_date TIMESTAMP,
     expiry_date TIMESTAMP,
     status_id bigserial,
     proportion_id bigserial,
+    alcohol_percentage DECIMAL(10,3) NOT NULL,
+    iva decimal(10,3),
+    consumo decimal(10,3),
+    sold_units int,
     FOREIGN KEY (proportion_id) REFERENCES PROPORTION(id),
     FOREIGN KEY (category_id) REFERENCES CATEGORY(id),
     FOREIGN KEY (status_id) REFERENCES STATUS(id)
@@ -100,6 +105,9 @@ CREATE TABLE ORDERS(
   delivery_date TIMESTAMP,
   finish_date TIMESTAMP,
   status_id bigserial,
+  iva decimal(10,3),
+  consumo decimal(10,3),
+  total_products decimal(10,3),
   FOREIGN KEY (customer_id) REFERENCES CUSTOMER(id),
   FOREIGN KEY (address_id) REFERENCES ADDRESSES(id),
   FOREIGN KEY (status_id) REFERENCES STATUS(id)
@@ -148,24 +156,7 @@ VALUES ('Tequila', 'Ismael.trocha@hotmail.com', NOW());
 INSERT INTO CATEGORY (name, create_by, creation_date)
 VALUES ('Cerveza', 'Ismael.trocha@hotmail.com', NOW());
 
+INSERT INTO CATEGORY (name, create_by, creation_date)
+VALUES ('Otros', 'Ismael.trocha@hotmail.com', NOW());
 
 INSERT INTO STATUS(name) VALUES ('ACTIVE');
--- Insert 1: Aguardiente Antioqueño
-INSERT INTO PRODUCTS (name, description, image_url, stock, category_id, creation_date, discount_amount, price, update_date, hide_date, expiry_date, status_id, proportion_id)
-VALUES ('Aguardiente Antioqueño', 'Aguardiente tradicional de Antioquia', 'aguardiente_antioqueno.jpg', 100, 1, NOW(), 0, 250.00, NOW(), NOW(), NOW(), 1, 1);
-
--- Insert 2: Ron Medellín
-INSERT INTO PRODUCTS (name, description, image_url, stock, category_id, creation_date, discount_amount, price, update_date, hide_date, expiry_date, status_id, proportion_id)
-VALUES ('Ron Medellín', 'Ron añejo de Medellín', 'ron_medellin.jpg', 75, 3, NOW(), 0, 80.00, NOW(), NOW(), NOW(), 1, 1);
-
--- Insert 3: Cerveza Club Colombia Dorada
-INSERT INTO PRODUCTS (name, description, image_url, stock, category_id, creation_date, discount_amount, price, update_date, hide_date, expiry_date, status_id, proportion_id)
-VALUES ('Cerveza Club Colombia Dorada', 'Cerveza rubia premium', 'cerveza_club_colombia.jpg', 120, 5, NOW(), 0, 45.00, NOW(), NOW(), NOW(), 1, 1);
-
--- Insert 4: Aguardiente Néctar
-INSERT INTO PRODUCTS (name, description, image_url, stock, category_id, creation_date, discount_amount, price, update_date, hide_date, expiry_date, status_id, proportion_id)
-VALUES ('Aguardiente Néctar', 'Aguardiente de la región Caribe', 'aguardiente_nectar.jpg', 90, 1, NOW(), 0, 220.00, NOW(), NOW(), NOW(), 1, 1);
-
--- Insert 5: Tequila Sol de México
-INSERT INTO PRODUCTS (name, description, image_url, stock, category_id, creation_date, discount_amount, price, update_date, hide_date, expiry_date, status_id, proportion_id)
-VALUES ('Tequila Sol de México', 'Tequila 100% agave azul', 'tequila_sol_de_mexico.jpg', 60, 4, NOW(), 0, 70.00, NOW(), NOW(), NOW(), 1, 1);

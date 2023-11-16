@@ -16,5 +16,6 @@ public class UpdateProductRequest {
   private Long categoryId;
   private Long proportionId;
   private Long statusId;
+  private double alcoholPercentage;
 
 }

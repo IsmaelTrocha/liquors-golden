@@ -4,8 +4,10 @@ import lombok.Data;
 
 @Data
 public class OrderResponse {
-
-  private Double total;
-  private Long customerId;
-  private Long orderId;
+    private Double totalProducts;
+    private Double iva;
+    private Double consumo;
+    private Double total;
+    private Long customerId;
+    private Long orderId;
 }
