@@ -2,9 +2,9 @@ server:
   port: 8080
 
 spring:
- config:
-   activate:
-     on-profile: local
+  config:
+    activate:
+      on-profile: local
 ---
 
 spring:
